@@ -95,7 +95,7 @@ class MasterViewController:
         // portal
         let AppInfo = SKTAppInfo()
         AppInfo.appKey = "MC0CFQD1tdTpaABkppmG+iP3dB9kolYVtwIUY8c3UmEfaPoTI3AxbPOTpNgw+fo="
-        AppInfo.bundleID = "ios:com.socketmobile.SingleEntrySwift"
+        AppInfo.appID = "ios:com.socketmobile.SingleEntrySwift"
         AppInfo.developerID = "bb57d8e1-f911-47ba-b510-693be162686a"
         
         // there is a stack of delegates the last push is the
