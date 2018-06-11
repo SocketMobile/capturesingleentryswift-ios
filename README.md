@@ -21,7 +21,7 @@ The Capture SDK uses CocoaPods. If it needs to be installed, please check the [C
 The Socket Mobile Capture SDK is required in order to compile this sample.
 
 ## Documentation
-The Capture SDK documentation can be found [here](http://docs.socketmobile.com/capture-preview/ios/en/latest/swift.html "Capture SDK documentation").
+The Capture SDK documentation can be found [here](https://docs.socketmobile.com/capture/ios/en/latest/swift.html "Capture SDK documentation").
 
 ## Installation
 The following steps show how to get and build this project.
