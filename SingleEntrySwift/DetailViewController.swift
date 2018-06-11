@@ -81,7 +81,7 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
                 }
             })
         }
-        else if let device = lastDeviceConnected as CaptureHelperDevice! {
+        else if let device = lastDeviceConnected {
             device.setTrigger(.start, withCompletionHandler: { (result) in
                 print("triggering the device returns: \(result.rawValue)")
             })
@@ -155,7 +155,7 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
             softScanner = device
             
             // set the Overlay View context to give a reference to this controller
-            if let scanner = softScanner as CaptureHelperDevice! {
+            if let scanner = softScanner {
                 let context : [String:Any] = [SKTCaptureSoftScanContext : self]
                 
                 scanner.setSoftScanOverlayViewParameter(context, withCompletionHandler: { (result) in

@@ -248,7 +248,7 @@ class MasterViewController:
         #else // to remove the Host Acknowledgment if it was set before
             device.getDataAcknowledgmentWithCompletionHandler({(result: SKTResult, dataAcknowledgment: SKTCaptureDeviceDataAcknowledgment?) in
                 if result == SKTCaptureErrors.E_NOERROR {
-                    if var localAck = dataAcknowledgment as SKTCaptureDeviceDataAcknowledgment! {
+                    if var localAck = dataAcknowledgment {
                         if localAck == .off {
                             localAck = .on
                             device.setDataAcknowledgment(localAck, withCompletionHandler: {(result: SKTResult) in
@@ -326,7 +326,7 @@ class MasterViewController:
         device.getFavoriteDevicesWithCompletionHandler { (result, favorites) in
             print("getting the favorite devices returned \(result.rawValue)")
             if result == SKTCaptureErrors.E_NOERROR {
-                if let fav = favorites as String! {
+                if let fav = favorites {
                     // if favorites is empty (meaning D600 auto-discovery is off)
                     // then set it to "*" to connect to any D600 in the vicinity
                     // To turn off the BLE auto reconnection, set the favorites to

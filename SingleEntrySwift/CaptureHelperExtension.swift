@@ -38,7 +38,7 @@ extension CaptureHelper
         property.uLongValue = UInt(SKTHelper.getDataComfirmation(withReserve: 0, withRumble: Int(SKTCaptureDataConfirmationRumble.good.rawValue), withBeep: Int(SKTCaptureDataConfirmationBeep.good.rawValue), withLed: Int(SKTCaptureDataConfirmationLed.green.rawValue)))
         
         // make sure we have a valid reference to the Capture API
-        if let capture = captureApi as SKTCapture! {
+        if let capture = captureApi {
             capture.setProperty(property, completionHandler: {(result, propertyResult)  in
                 completion(result)
             })

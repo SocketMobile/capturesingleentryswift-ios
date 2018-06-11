@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
             print("getSoftScanStatusWithCompletionHandler received!")
             print("Result:", result.rawValue)
             if result == SKTCaptureErrors.E_NOERROR {
-                let status = softScanStatus as SKTCaptureSoftScan!
+                let status = softScanStatus
                 print("receive SoftScan status:",status ?? .disable)
                 if status == .enable {
                     self.softscan.isOn = true
@@ -59,11 +59,11 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         })
         
         // check the D600 support
-        if let dm = deviceManager as CaptureHelperDeviceManager! {
+        if let dm = deviceManager {
             dm.getFavoriteDevicesWithCompletionHandler({ (result, favorites) in
                 print("getting the Device Manager favorites returns \(result.rawValue)")
                 if result == SKTCaptureErrors.E_NOERROR {
-                    if let fav = favorites as String! {
+                    if let fav = favorites {
                         self.d600Support.isOn = !fav.isEmpty
                     }
                 }
@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         for d in deviceManagers {
             deviceManager = d
         }
-        if let dm = deviceManager as CaptureHelperDeviceManager!{
+        if let dm = deviceManager {
             if !d600Support.isOn {
                 print("turn off the D600 support...")
                 dm.setFavoriteDevices("", withCompletionHandler: { (result) in
