@@ -27,7 +27,7 @@ The Capture SDK documentation can be found [here](https://docs.socketmobile.com/
 The following steps show how to get and build this project.
 
 Open a Terminal window and clone the project:
-`git clone git@github.com:SocketMobile/capturesingleentryswift-ios.git && cd capturesingleentryswift-ios`
+`git clone https://github.com/SocketMobile/capturesingleentryswift-ios.git && cd capturesingleentryswift-ios`
 
 Then install Socket Mobile Capture SDK:
 `pod install`
