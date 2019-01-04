@@ -105,11 +105,9 @@ class MasterViewController:
         captureHelper.pushDelegate(self)
         
         // to make all the delegates able to update the UI without the app
-        // having to dispatch the UI update code, set the delegateDispatchQueue
+        // having to dispatch the UI update code, set the dispatchQueue
         // property to the DispatchQueue.main
-        // Do the the same with the property dispatchQueue if the UI needs to 
-        // be updated in any of the completion handlers
-        captureHelper.delegateDispatchQueue = DispatchQueue.main
+        captureHelper.dispatchQueue = DispatchQueue.main
 
         // open Capture Helper only once in the application
         captureHelper.openWithAppInfo(AppInfo, withCompletionHandler: { (_ result: SKTResult) in

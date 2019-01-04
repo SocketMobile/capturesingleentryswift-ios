@@ -157,7 +157,6 @@
 				679FF0361A1A83C900510266 /* Frameworks */,
 				679FF0371A1A83C900510266 /* Resources */,
 				3CF2E61C748C15301D1242B1 /* [CP] Embed Pods Frameworks */,
-				6AD327AB5A1D3CC7D977AFEF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,7 +255,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SKTCapture/SKTCapture.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -265,22 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6AD327AB5A1D3CC7D977AFEF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D0A4C1BA0E1948CE01F5F85A /* [CP] Check Pods Manifest.lock */ = {
