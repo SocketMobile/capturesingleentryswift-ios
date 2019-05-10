@@ -199,7 +199,7 @@ class MasterViewController:
 
     // MARK: - Helper functions
     func displayBatteryLevel(_ level: UInt?, fromDevice device: CaptureHelperDevice, withResult result: SKTResult) {
-        if result != SKTCaptureErrors.E_NOERROR {
+        if result != .E_NOERROR {
             print("error while getting the device battery level: \(result.rawValue)")
         }
         else{
@@ -218,13 +218,13 @@ class MasterViewController:
         // from the #if to the #endif
         #if HOST_ACKNOWLEDGMENT
             device.getDataAcknowledgmentWithCompletionHandler({(result, dataAcknowledgment) in
-                if result == SKTCaptureErrors.E_NOERROR {
+                if result == .E_NOERROR {
                     var localAck = dataAcknowledgment
                     if localAck == SKTCaptureDeviceDataAcknowledgment.on {
                         localAck = SKTCaptureDeviceDataAcknowledgment.off
                         device.setDataAcknowledgment(localAck, withCompletionHandler : {(result, propertyResult) in
-                            if result != SKTCaptureErrors.E_NOERROR {
-                                print("Set Local Acknowledgment returns: \(result)")
+                            if result != .E_NOERROR {
+                                print("Set Local Acknowledgment returns: \(result.rawValue)")
                             }
                         })
                     }
@@ -232,12 +232,12 @@ class MasterViewController:
             })
             
             device.getDecodeActionWithCompletionHandler(completion: {(result: SKTResult, decodeAction: SKTCaptureLocalDecodeAction?) in
-                if result == SKTCaptureErrors.E_NOERROR {
+                if result == .E_NOERROR {
                     if decodeAction != .none {
                         decodeAction = .none
                         device.setDecodeAction(decodeAction: decodeAction, withCompletionHandler:{(result: SKTResult) in
-                            if result != SKTCaptureErrors.E_NOERROR {
-                                print("Set Decode Action returs: \(result)")
+                            if result != .E_NOERROR {
+                                print("Set Decode Action returs: \(result.rawValue)")
                             }
                         })
                     }
@@ -245,13 +245,13 @@ class MasterViewController:
             })
         #else // to remove the Host Acknowledgment if it was set before
             device.getDataAcknowledgmentWithCompletionHandler({(result: SKTResult, dataAcknowledgment: SKTCaptureDeviceDataAcknowledgment?) in
-                if result == SKTCaptureErrors.E_NOERROR {
+                if result == .E_NOERROR {
                     if var localAck = dataAcknowledgment {
                         if localAck == .off {
                             localAck = .on
                             device.setDataAcknowledgment(localAck, withCompletionHandler: {(result: SKTResult) in
-                                if result != SKTCaptureErrors.E_NOERROR {
-                                    print("Set Data Acknowledgment returns: \(result)")
+                                if result != .E_NOERROR {
+                                    print("Set Data Acknowledgment returns: \(result.rawValue)")
                                 }
                             })
                         }
@@ -260,15 +260,15 @@ class MasterViewController:
             })
             
             device.getDecodeActionWithCompletionHandler({ (result: SKTResult, decodeAction: SKTCaptureLocalDecodeAction?)->Void in
-                if result == SKTCaptureErrors.E_NOERROR {
+                if result == .E_NOERROR {
                     if decodeAction == .none {
                         var action = SKTCaptureLocalDecodeAction()
                         action.insert(.beep)
                         action.insert(.flash)
                         action.insert(.rumble)
                         device.setDecodeAction(action, withCompletionHandler: { (result) in
-                            if result != SKTCaptureErrors.E_NOERROR {
-                                print("Set Decode Action returns: \(result)")
+                            if result != .E_NOERROR {
+                                print("Set Decode Action returns: \(result.rawValue)")
                             }
                             
                         })
@@ -277,14 +277,14 @@ class MasterViewController:
             })
         #endif
         device.getNotificationsWithCompletionHandler { (result :SKTResult, notifications:SKTCaptureNotifications?) in
-            if result == SKTCaptureErrors.E_NOERROR {
+            if result == .E_NOERROR {
                 var notif = notifications!
                 if !notif.contains(SKTCaptureNotifications.batteryLevelChange) {
                     print("scanner not configured for battery level change notification, doing it now...")
                     notif.insert(SKTCaptureNotifications.batteryLevelChange)
                     device.setNotifications(notif, withCompletionHandler: {(result)->Void in
-                        if result != SKTCaptureErrors.E_NOERROR {
-                            print("error while setting the device notifications configuration \(result)")
+                        if result != .E_NOERROR {
+                            print("error while setting the device notifications configuration \(result.rawValue)")
                         } else {
                             device.getBatteryLevelWithCompletionHandler({ (result, batteryLevel) in
                                 self.displayBatteryLevel(batteryLevel, fromDevice: device, withResult: result)
@@ -299,7 +299,7 @@ class MasterViewController:
                     })
                 }
             } else {
-                if result == SKTCaptureErrors.E_NOTSUPPORTED {
+                if result == .E_NOTSUPPORTED {
                     print("scanner \(String(describing: device.deviceInfo.name)) does not support reading for notifications configuration")
                 } else {
                     print("scanner \(String(describing: device.deviceInfo.name)) return an error \(result) when reading for notifications configuration")
@@ -323,7 +323,7 @@ class MasterViewController:
         device.dispatchQueue = DispatchQueue.main
         device.getFavoriteDevicesWithCompletionHandler { (result, favorites) in
             print("getting the favorite devices returned \(result.rawValue)")
-            if result == SKTCaptureErrors.E_NOERROR {
+            if result == .E_NOERROR {
                 if let fav = favorites {
                     // if favorites is empty (meaning D600 auto-discovery is off)
                     // then set it to "*" to connect to any D600 in the vicinity
@@ -351,7 +351,7 @@ class MasterViewController:
     // cancel button in the SoftScan View Finder
     func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice device: CaptureHelperDevice, withResult result: SKTResult) {
         
-        if result == SKTCaptureErrors.E_NOERROR {
+        if result == .E_NOERROR {
             let rawData = decodedData?.decodedData
             let rawDataSize = rawData?.count
             print("Size: \(String(describing: rawDataSize))")
@@ -361,7 +361,7 @@ class MasterViewController:
             #if HOST_ACKNOWLEDGMENT
                 device.setDataConfirmationWithLed(led: .green, withBeep: .good, withRumble: .good, withCompletionHandler: {(result) -> Void in
                     if result != SKTCaptureErrors.E_NOERROR {
-                        print("Set Data Confirmation returns: \(result)")
+                        print("Set Data Confirmation returns: \(result.rawValue)")
                     }
                 })
             #endif
