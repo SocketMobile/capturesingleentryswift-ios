@@ -76,7 +76,7 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
             showSoftScanOverlay = true
             scanner.setTrigger(.start, withCompletionHandler: {(result) in
                 self.displayAlertForResult(result, forOperation: "SetTrigger")
-                if result != SKTCaptureErrors.E_NOERROR {
+                if result != .E_NOERROR {
                     self.showSoftScanOverlay = false
                 }
             })
@@ -107,7 +107,7 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
     }
 
     func displayAlertForResult(_ result: SKTResult, forOperation operation: String){
-        if result != SKTCaptureErrors.E_NOERROR {
+        if result != .E_NOERROR {
             let errorTxt = "Error \(result.rawValue) while doing a \(operation)"
             let alert = UIAlertController(title: "Capture Error", message: errorTxt, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
@@ -120,7 +120,7 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
 
     func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice device: CaptureHelperDevice, withResult result:SKTResult) {
         print("didReceiveDecodedData in the detail view with result: \(result.rawValue)")
-        if result == SKTCaptureErrors.E_NOERROR {
+        if result == .E_NOERROR {
             if let rawData = decodedData!.decodedData {
                 let rawDataSize = rawData.count
                 print("Size: \(rawDataSize)")
@@ -134,8 +134,8 @@ class DetailViewController: UIViewController, CaptureHelperDevicePresenceDelegat
                 // the host Acknowledgment for the decoded data
                 #if HOST_ACKNOWLEDGMENT
                     device.setDataConfirmationWithLed(SKTCaptureDataConfirmationLed.green, withBeep:SKTCaptureDataConfirmationBeep.good, withRumble: SKTCaptureDataConfirmationRumble.good, withCompletionHandler: {(result) in
-                        if result != SKTCaptureErrors.E_NOERROR {
-                            print("error trying to confirm the decoded data: \(result)")
+                        if result != .E_NOERROR {
+                            print("error trying to confirm the decoded data: \(result.rawValue)")
                         }
                     })
                 #endif

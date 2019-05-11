@@ -1,6 +1,5 @@
 
 def import_pods
-  use_frameworks!
   pod 'SKTCapture', '~> 1.1'
 end
 
