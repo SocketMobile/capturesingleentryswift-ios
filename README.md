@@ -4,7 +4,7 @@ Simple iOS app showing the use of Capture SDK.
 ## IMPORTANT
 When using/installing CocoaPods in a new project, the project workspace file should be used instead of the project file.
 
-The Socket Mobile Bluetooth barcode scanners and RFID Readers use the External Accessory Framework.
+The Socket Mobile Bluetooth barcode scanners use the External Accessory Framework.
 
 It is very important to make sure your application info plist file contains the supported external accessory protocol string array `com.socketmobile.chs`.
 ![Project Settings](./img/SingleEntryProjectSettings.png "SingleEntry Project Settings")
@@ -14,6 +14,8 @@ The previous version of iOS used to give an error message in the traces when a b
 Adding the external accessory protocol string to your application will require your application to be whitelisted with Socket Mobile before submission to the App Store.
 
 Make sure to contact Socket Mobile in order to whitelist your application.  You can submit your app to be whitelisted in the Socket Mobile Developer portal.
+
+**NOTE** The Socket Mobile RFID Reader/Writer uses Bluetooth Low Energy (BLE) and does not require or use External Accessory Framework, therefore it is not necessary when supporting only the Socket Mobile RFID Reader/Writer to add the `com.socketmobile.chs` in the supported external accessory protocol string.
 
 ## Prerequisites
 The Capture SDK uses CocoaPods. If it needs to be installed, please check the [CocoaPods website](https://cocoapods.org/ "CocoaPods Homepage") for the most current instructions.
