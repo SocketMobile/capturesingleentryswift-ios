@@ -114,7 +114,7 @@ The edit box receives the decoded data from the scanner.
 Since the Capture Helper is written in Swift it can be used directly in
 a Swift project.
 
-To use it in the source code, a simple `#import SKTCapture` is required
+To use it in the source code, a simple `import SKTCapture` is required
 at the beginning of the file.
 
 In this simple example the CaptureHelper is "attached" to the main view
