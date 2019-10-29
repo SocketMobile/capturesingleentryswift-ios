@@ -1,16 +1,16 @@
 PODS:
-  - SKTCapture (1.1.296)
+  - SKTCapture (1.1.351)
 
 DEPENDENCIES:
   - SKTCapture (~> 1.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - SKTCapture
 
 SPEC CHECKSUMS:
-  SKTCapture: 70aed9bd07fe727337080f97bc2a7759552581e8
+  SKTCapture: 251eab8b96eb6672d73b611301e89ad238139ebc
 
-PODFILE CHECKSUM: 81dec8c4a1570b04b2721d35594d40aeb49cc2b2
+PODFILE CHECKSUM: c0e78ca3aeb439eb17ad96a3d2ff9261d6c197ff
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
