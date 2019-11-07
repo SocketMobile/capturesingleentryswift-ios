@@ -26,6 +26,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>SoftScan is using the camera to read and decode barcodes</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>SingleEntrySwift would like access to Bluetooth to connect to barcode and RFID readers</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
