@@ -1,16 +1,16 @@
 PODS:
-  - SKTCapture (1.1.384)
+  - SKTCapture (1.2.9)
 
 DEPENDENCIES:
-  - SKTCapture (~> 1.1)
+  - SKTCapture (~> 1.2)
 
 SPEC REPOS:
   trunk:
     - SKTCapture
 
 SPEC CHECKSUMS:
-  SKTCapture: 2f0757acd8420d38eeebea16a33bed52ff88503e
+  SKTCapture: 30c26a68205bd1bc1d668127d51c2719cddb5270
 
-PODFILE CHECKSUM: 4a381b67edbbdb63a126ba8286771ae973e1a95e
+PODFILE CHECKSUM: 96f950f220ab85caaec955dd96c70c29b1f58e80
 
 COCOAPODS: 1.8.4
