@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
     @IBOutlet weak var softscan: UISwitch!
     @IBOutlet weak var captureVersion: UILabel!
     
-    @IBOutlet weak var d600Support: UISwitch!
+    @IBOutlet weak var NFCSupportSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,13 +58,13 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
             }
         })
         
-        // check the D600 support
+        // check the NFC support
         if let dm = deviceManager {
             dm.getFavoriteDevicesWithCompletionHandler({ (result, favorites) in
                 print("getting the Device Manager favorites returns \(result.rawValue)")
                 if result == SKTCaptureErrors.E_NOERROR {
                     if let fav = favorites {
-                        self.d600Support.isOn = !fav.isEmpty
+                        self.NFCSupportSwitch.isOn = !fav.isEmpty
                     }
                 }
             })
@@ -99,27 +99,27 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         }
     }
     
-    @IBAction func changeD600Support(_ sender: UISwitch) {
+    @IBAction func changeNFCSupport(_ sender: UISwitch) {
         let deviceManagers = CaptureHelper.sharedInstance.getDeviceManagers()
         for d in deviceManagers {
             deviceManager = d
         }
         if let dm = deviceManager {
-            if !d600Support.isOn {
-                print("turn off the D600 support...")
+            if !NFCSupportSwitch.isOn {
+                print("turn off the NFC support...")
                 dm.setFavoriteDevices("", withCompletionHandler: { (result) in
-                    print("turning off D600 support returns \(result.rawValue)")
+                    print("turning off NFC support returns \(result.rawValue)")
                 })
             }
             else {
-                print("turn on the D600 support...")
+                print("turn on the NFC support...")
                 dm.setFavoriteDevices("*", withCompletionHandler: { (result) in
-                    print("turning off D600 support returns \(result.rawValue)")
+                    print("turning off NFC support returns \(result.rawValue)")
                 })
             }
         }
         else {
-            d600Support.isEnabled = false
+            NFCSupportSwitch.isEnabled = false
         }
     }
     /*
@@ -156,7 +156,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         deviceManager = device
         deviceManager?.getFavoriteDevicesWithCompletionHandler({ (result, favorites) in
             if result == SKTCaptureErrors.E_NOERROR {
-                self.d600Support.isOn = !favorites!.isEmpty
+                self.NFCSupportSwitch.isOn = !favorites!.isEmpty
             }
         })
     }
