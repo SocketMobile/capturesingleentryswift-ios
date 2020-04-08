@@ -1,5 +1,5 @@
 PODS:
-  - SKTCapture (1.2.9)
+  - SKTCapture (1.2.36)
 
 DEPENDENCIES:
   - SKTCapture (~> 1.2)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SKTCapture
 
 SPEC CHECKSUMS:
-  SKTCapture: 30c26a68205bd1bc1d668127d51c2719cddb5270
+  SKTCapture: 49e42fab5b272728a7b275831598af4a6fca379a
 
 PODFILE CHECKSUM: 96f950f220ab85caaec955dd96c70c29b1f58e80
 

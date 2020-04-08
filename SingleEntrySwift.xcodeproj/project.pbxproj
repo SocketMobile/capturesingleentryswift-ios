@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46448A020F47F1304F1E173B /* libPods-SingleEntrySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C7D986AE3E230165BA477 /* libPods-SingleEntrySwift.a */; };
 		679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF03E1A1A83C900510266 /* AppDelegate.swift */; };
 		679FF0411A1A83C900510266 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0401A1A83C900510266 /* MasterViewController.swift */; };
 		679FF0431A1A83C900510266 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0421A1A83C900510266 /* DetailViewController.swift */; };
@@ -14,7 +15,6 @@
 		679FF0481A1A83C900510266 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679FF0471A1A83C900510266 /* Images.xcassets */; };
 		679FF04B1A1A83C900510266 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679FF0491A1A83C900510266 /* LaunchScreen.xib */; };
 		679FF0571A1A83C900510266 /* SingleEntrySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */; };
-		80141714FBAEDDC9BCF3BD56 /* libPods-SingleEntrySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6674A10CE5458952698BC6D /* libPods-SingleEntrySwift.a */; };
 		E744CF421BDFDD700090F8C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744CF411BDFDD700090F8C0 /* SettingsViewController.swift */; };
 		E7B2669A1D94130E00A49830 /* CaptureHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54BEEC8238C5D9FF52E62982 /* Pods-SingleEntrySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.release.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.release.xcconfig"; sourceTree = "<group>"; };
 		679FF0391A1A83C900510266 /* SingleEntrySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleEntrySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF03D1A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679FF03E1A1A83C900510266 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,11 +42,10 @@
 		679FF0501A1A83C900510266 /* SingleEntrySwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingleEntrySwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF0551A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntrySwiftTests.swift; sourceTree = "<group>"; };
-		D6674A10CE5458952698BC6D /* libPods-SingleEntrySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SingleEntrySwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE39EF38ECA66998A34C086B /* Pods-SingleEntrySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.release.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.release.xcconfig"; sourceTree = "<group>"; };
+		CE3C7D986AE3E230165BA477 /* libPods-SingleEntrySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SingleEntrySwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3C7FE2C80D19237845DA639 /* Pods-SingleEntrySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.debug.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E744CF411BDFDD700090F8C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureHelperExtension.swift; sourceTree = "<group>"; };
-		FF08C726BDE81C69953C9479 /* Pods-SingleEntrySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.debug.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80141714FBAEDDC9BCF3BD56 /* libPods-SingleEntrySwift.a in Frameworks */,
+				46448A020F47F1304F1E173B /* libPods-SingleEntrySwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +73,8 @@
 				679FF03B1A1A83C900510266 /* SingleEntrySwift */,
 				679FF0531A1A83C900510266 /* SingleEntrySwiftTests */,
 				679FF03A1A1A83C900510266 /* Products */,
-				732106D295F11BA1D3480FD6 /* Pods */,
-				81E99F88BD407D7938891B2F /* Frameworks */,
+				FD0E48DA0B05BDD9490A7370 /* Pods */,
+				A6A75A2FAD7103A121D62CF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,22 +128,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		732106D295F11BA1D3480FD6 /* Pods */ = {
+		A6A75A2FAD7103A121D62CF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF08C726BDE81C69953C9479 /* Pods-SingleEntrySwift.debug.xcconfig */,
-				DE39EF38ECA66998A34C086B /* Pods-SingleEntrySwift.release.xcconfig */,
+				CE3C7D986AE3E230165BA477 /* libPods-SingleEntrySwift.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD0E48DA0B05BDD9490A7370 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3C7FE2C80D19237845DA639 /* Pods-SingleEntrySwift.debug.xcconfig */,
+				54BEEC8238C5D9FF52E62982 /* Pods-SingleEntrySwift.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		81E99F88BD407D7938891B2F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D6674A10CE5458952698BC6D /* libPods-SingleEntrySwift.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,11 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 679FF05A1A1A83C900510266 /* Build configuration list for PBXNativeTarget "SingleEntrySwift" */;
 			buildPhases = (
-				E2B5FCA603AC087166231682 /* [CP] Check Pods Manifest.lock */,
+				3151C3F5D922B54D447248B1 /* [CP] Check Pods Manifest.lock */,
 				679FF0351A1A83C900510266 /* Sources */,
 				679FF0361A1A83C900510266 /* Frameworks */,
 				679FF0371A1A83C900510266 /* Resources */,
-				DCB4251A9C08A3401BD263B3 /* [CP] Copy Pods Resources */,
+				C3235F4525495FB6C0560217 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,27 +250,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DCB4251A9C08A3401BD263B3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-resources.sh",
-				"${PODS_ROOT}/SKTCapture/softScanBeep.wav",
-				"${PODS_ROOT}/SKTCapture/socketmobilepublickey.pem",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/softScanBeep.wav",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/socketmobilepublickey.pem",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2B5FCA603AC087166231682 /* [CP] Check Pods Manifest.lock */ = {
+		3151C3F5D922B54D447248B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -290,6 +270,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3235F4525495FB6C0560217 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-resources.sh",
+				"${PODS_ROOT}/SKTCapture/softScanBeep.wav",
+				"${PODS_ROOT}/SKTCapture/socketmobilepublickey.pem",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/softScanBeep.wav",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/socketmobilepublickey.pem",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -460,7 +460,7 @@
 		};
 		679FF05B1A1A83C900510266 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF08C726BDE81C69953C9479 /* Pods-SingleEntrySwift.debug.xcconfig */;
+			baseConfigurationReference = D3C7FE2C80D19237845DA639 /* Pods-SingleEntrySwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -490,7 +490,7 @@
 		};
 		679FF05C1A1A83C900510266 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE39EF38ECA66998A34C086B /* Pods-SingleEntrySwift.release.xcconfig */;
+			baseConfigurationReference = 54BEEC8238C5D9FF52E62982 /* Pods-SingleEntrySwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
