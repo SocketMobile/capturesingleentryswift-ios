@@ -3,22 +3,22 @@
 //  SingleEntrySwift
 //
 //
-//  NEW SUPPORT FOR SOCKET D600 (USING BLE)
+//  NEW SUPPORT FOR SOCKET NFC readers (i.e. D600, S550) (USING BLE)
 //  =======================================
-//  IN ORDER TO SUPPORT THE SOCKET D600 READER USING BLE
+//  IN ORDER TO SUPPORT THE SOCKET NFC READER USING BLE
 //  DERIVE THE VIEW CONTROLLER FROM CaptureHelperDeviceManagerPresenceDelegate
 //  TO RECEIVE THE NOTIFICATION WHEN BLE MANAGER IS READY.
 //  THEN IF THERE IS NO FAVORITE DEVICES, THERE WONT BE ANY BLE DISCOVERY
-//  IN ORDER TO DISCOVER AND CONNECT TO A SOCKET D600, SET THE FAVORITE DEVICES
-//  TO "*". IF A SOCKET D600 IS IN RANGE CAPTURE WILL AUTOMATICALLY CONNECT TO IT
-//  AND REPLACE THE FAVORITE DEVICES BY THIS D600 DEVICE IDENTIFIER. SO THE NEXT
+//  IN ORDER TO DISCOVER AND CONNECT TO A SOCKET NFC, SET THE FAVORITE DEVICES
+//  TO "*". IF A SOCKET NFC reader IS IN RANGE CAPTURE WILL AUTOMATICALLY CONNECT TO IT
+//  AND REPLACE THE FAVORITE DEVICES BY THIS NFC DEVICE IDENTIFIER. SO THE NEXT
 //  TIME THE DEVICE IS ON AND IN RANGE IT WILL AUTOMATICALLY CONNECT TO THIS PARTICULAR
-//  D600.
+//  NFC reader.
 //  IF BLE IS NO LONGER REQUIRED, THEN SETTING THE FAVORITE DEVICES TO AN EMPTY STRING
 //  WILL AUTOMATICALLY STOP ANY BLE OPERATION.
 //
 //  THE BLE MANAGER SUPPORTS METHODS FOR DOING A MANUAL BLE SCAN DISCOVERY WHICH
-//  COULD BE USE FOR SELECTING A PARTICULAR D600 BEFORE CONNECTING TO IT.
+//  COULD BE USE FOR SELECTING A PARTICULAR NFC reader BEFORE CONNECTING TO IT.
 //
 //
 //  SOCKET BARCODE READERS USING BLUETOOTH CLASSIC
@@ -313,7 +313,7 @@ class MasterViewController:
     }
 
     // MARK: - CaptureHelperDeviceManagerPresenceDelegate
-    // THIS IS THE PLACE TO TURN ON THE BLE FEATURE SO THE D600 CAN
+    // THIS IS THE PLACE TO TURN ON THE BLE FEATURE SO THE NFC READER CAN
     // BE DISCOVERED AND CONNECT TO THIS APP
     func didNotifyArrivalForDeviceManager(_ device: CaptureHelperDeviceManager, withResult result: SKTResult) {
         print("device manager arrival notification")
@@ -325,8 +325,8 @@ class MasterViewController:
             print("getting the favorite devices returned \(result.rawValue)")
             if result == .E_NOERROR {
                 if let fav = favorites {
-                    // if favorites is empty (meaning D600 auto-discovery is off)
-                    // then set it to "*" to connect to any D600 in the vicinity
+                    // if favorites is empty (meaning NFC reader auto-discovery is off)
+                    // then set it to "*" to connect to any NFC reader in the vicinity
                     // To turn off the BLE auto reconnection, set the favorites to
                     // an empty string
                     if fav.isEmpty {
