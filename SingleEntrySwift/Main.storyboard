@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2iK-AW-vEs">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="tFW-CZ-eF2">
+            <objects>
+                <viewController id="JDr-O6-Wkd" customClass="SettingsViewController" customModule="SingleEntrySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e7d-7e-f4T"/>
+                        <viewControllerLayoutGuide type="bottom" id="QaD-mv-uz0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m8J-Xz-UEE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SocketCam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chm-Ix-CvD">
+                                <rect key="frame" x="66" y="89" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Anb-1U-MRJ">
+                                <rect key="frame" x="184" y="84" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeSocketCam:" destination="JDr-O6-Wkd" eventType="valueChanged" id="18g-a8-I70"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture Version: requesting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-8y-IDb">
+                                <rect key="frame" x="16" y="186" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-CC-eop">
+                                <rect key="frame" x="183" y="125" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeNFCSupport:" destination="JDr-O6-Wkd" eventType="valueChanged" id="fdW-Dn-r9F"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NFC support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3R-54-VG8">
+                                <rect key="frame" x="66" y="130" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Chm-Ix-CvD" firstAttribute="leading" secondItem="m8J-Xz-UEE" secondAttribute="leadingMargin" constant="50" id="28n-hc-Ic0"/>
+                            <constraint firstItem="z3R-54-VG8" firstAttribute="top" secondItem="Chm-Ix-CvD" secondAttribute="bottom" constant="20" id="72Q-Ah-dAN"/>
+                            <constraint firstItem="z3R-54-VG8" firstAttribute="leading" secondItem="m8J-Xz-UEE" secondAttribute="leadingMargin" constant="50" id="Iqh-S1-8F5"/>
+                            <constraint firstItem="UTI-8y-IDb" firstAttribute="leading" secondItem="m8J-Xz-UEE" secondAttribute="leadingMargin" id="ad0-9M-wtd"/>
+                            <constraint firstItem="JfN-CC-eop" firstAttribute="top" secondItem="Anb-1U-MRJ" secondAttribute="bottom" constant="10" id="g85-kK-j52"/>
+                            <constraint firstItem="Anb-1U-MRJ" firstAttribute="top" secondItem="e7d-7e-f4T" secondAttribute="bottom" constant="40" id="mSt-TS-MG0"/>
+                            <constraint firstItem="UTI-8y-IDb" firstAttribute="top" secondItem="JfN-CC-eop" secondAttribute="bottom" constant="30" id="u4w-Ru-cnJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UTI-8y-IDb" secondAttribute="trailing" id="vbl-eT-Xtk"/>
+                            <constraint firstItem="Anb-1U-MRJ" firstAttribute="leading" secondItem="Chm-Ix-CvD" secondAttribute="trailing" constant="30" id="xY1-SL-x8p"/>
+                            <constraint firstItem="JfN-CC-eop" firstAttribute="leading" secondItem="z3R-54-VG8" secondAttribute="trailing" constant="20" id="yq0-yh-dwr"/>
+                            <constraint firstItem="Chm-Ix-CvD" firstAttribute="top" secondItem="e7d-7e-f4T" secondAttribute="bottom" constant="45" id="zto-c6-OuQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z0E-l8-wAI"/>
+                    <connections>
+                        <outlet property="captureVersion" destination="UTI-8y-IDb" id="WGX-KQ-jK4"/>
+                        <outlet property="nfSupportSwitch" destination="JfN-CC-eop" id="hqu-Wv-0x8"/>
+                        <outlet property="socketCamSwitch" destination="Anb-1U-MRJ" id="le9-9r-3Xl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmI-2L-MsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2071.1999999999998" y="266.71664167916043"/>
+        </scene>
+        <!--SingleEntry-->
+        <scene sceneID="KGc-ke-ikG">
+            <objects>
+                <viewController storyboardIdentifier="SingleEntryViewController" id="4Iq-ta-MBR" customClass="SingleEntryViewController" customModule="SingleEntrySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jkx-3P-bak"/>
+                        <viewControllerLayoutGuide type="bottom" id="yum-Ki-I3b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BFr-U3-rmU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKJ-xG-MMg">
+                                <rect key="frame" x="16" y="211" width="343" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAD-EA-QXd">
+                                <rect key="frame" x="16" y="73" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SN-j8-z3M">
+                                <rect key="frame" x="16" y="144" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4A-vZ-fWR">
+                                <rect key="frame" x="16" y="261" width="343" height="30"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="JDr-O6-Wkd" kind="show" id="j4w-8C-gZL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-kg-FGj">
+                                <rect key="frame" x="16" y="314" width="343" height="30"/>
+                                <state key="normal" title="SocketCam trigger"/>
+                                <connections>
+                                    <action selector="socketCamAction:" destination="4Iq-ta-MBR" eventType="touchUpInside" id="ymw-rK-olC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6g-U3-ula">
+                                <rect key="frame" x="16" y="373" width="343" height="30"/>
+                                <state key="normal" title="SocketCam continous scan"/>
+                                <connections>
+                                    <action selector="socketCamContinousScanAction:" destination="4Iq-ta-MBR" eventType="touchUpInside" id="rHl-Pq-LjD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wAD-EA-QXd" firstAttribute="trailing" secondItem="BFr-U3-rmU" secondAttribute="trailingMargin" id="1wn-dG-Ncd"/>
+                            <constraint firstItem="Y4A-vZ-fWR" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="5XN-jZ-XFh"/>
+                            <constraint firstItem="OEf-kg-FGj" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="270" id="AOe-ey-K6Q"/>
+                            <constraint firstItem="J6g-U3-ula" firstAttribute="trailing" secondItem="BFr-U3-rmU" secondAttribute="trailingMargin" id="ATR-tx-OP8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OEf-kg-FGj" secondAttribute="trailing" id="Dir-mR-DnF"/>
+                            <constraint firstItem="gKJ-xG-MMg" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="167" id="HEY-Xa-TSW"/>
+                            <constraint firstItem="5SN-j8-z3M" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="100" id="IYT-TK-tCy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5SN-j8-z3M" secondAttribute="trailing" id="Lhh-1T-EvK"/>
+                            <constraint firstItem="J6g-U3-ula" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="MoI-QM-Aqp"/>
+                            <constraint firstItem="J6g-U3-ula" firstAttribute="top" secondItem="OEf-kg-FGj" secondAttribute="bottom" constant="29" id="UTY-UC-rS3"/>
+                            <constraint firstItem="Y4A-vZ-fWR" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="217" id="WQw-Ed-Fyl"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5SN-j8-z3M" secondAttribute="leading" id="WVk-jQ-ZW5"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wAD-EA-QXd" secondAttribute="leading" id="Xjs-Hf-oz3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gKJ-xG-MMg" secondAttribute="trailing" id="cXb-kh-zpP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gKJ-xG-MMg" secondAttribute="leading" id="rfE-Am-orY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Y4A-vZ-fWR" secondAttribute="trailing" id="tnh-V7-JHX"/>
+                            <constraint firstItem="OEf-kg-FGj" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="wPf-q3-Fe9"/>
+                            <constraint firstItem="wAD-EA-QXd" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="29" id="wsY-e9-ITV"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="SingleEntry" id="zA6-Uu-3Rw"/>
+                    <connections>
+                        <outlet property="connectionStatus" destination="5SN-j8-z3M" id="5Hx-gu-MXO"/>
+                        <outlet property="decodedData" destination="gKJ-xG-MMg" id="QNe-t1-I3j"/>
+                        <outlet property="socketCamContinuousScan" destination="J6g-U3-ula" id="PRu-RQ-p0f"/>
+                        <outlet property="socketCamTrigger" destination="OEf-kg-FGj" id="bry-5r-ADf"/>
+                        <outlet property="statusLabel" destination="wAD-EA-QXd" id="Sw7-vZ-fRf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yW5-d8-QMV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216.8" y="266.71664167916043"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="876-IT-aQJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2iK-AW-vEs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="elm-Vk-L7m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Iq-ta-MBR" kind="relationship" relationship="rootViewController" id="CRq-zy-yjq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHO-Hb-FXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240.80000000000001" y="266.71664167916043"/>
+        </scene>
+    </scenes>
+</document>

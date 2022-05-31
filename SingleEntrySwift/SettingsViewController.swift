@@ -7,37 +7,37 @@
 //
 
 import UIKit
-import SKTCapture
+import CaptureSDK
 
 class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceManagerPresenceDelegate{
     var detailItem: AnyObject?
     var deviceManager: CaptureHelperDeviceManager?
 
-    @IBOutlet weak var softscan: UISwitch!
+    @IBOutlet weak var socketCamSwitch: UISwitch!
     @IBOutlet weak var captureVersion: UILabel!
-    
-    @IBOutlet weak var NFCSupportSwitch: UISwitch!
+    @IBOutlet weak var nfSupportSwitch: UISwitch!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // retrieve the current status of SoftScan
+        // retrieve the current status of SocketCam
         let capture = CaptureHelper.sharedInstance
 
-        capture.getSoftScanStatusWithCompletionHandler( {(result, softScanStatus) in
-            print("getSoftScanStatusWithCompletionHandler received!")
+        capture.getSocketCamStatusWithCompletionHandler( {(result, socketCamStatus) in
+            print("getSocketCamStatusWithCompletionHandler received!")
             print("Result:", result.rawValue)
             if result == SKTCaptureErrors.E_NOERROR {
-                let status = softScanStatus
-                print("receive SoftScan status:",status ?? .disable)
+                let status = socketCamStatus
+                print("receive SocketCam status:",status ?? .disable)
                 if status == .enable {
-                    self.softscan.isOn = true
+                    self.socketCamSwitch.isOn = true
                 } else {
-                    self.softscan.isOn = false
+                    self.socketCamSwitch.isOn = false
                     if status == .notSupported {
-                        capture.setSoftScanStatus(.supported, withCompletionHandler: { (result) in
-                          print("setting softscan to supported returned \(result.rawValue)")
+                        capture.setSocketCamStatus(.supported, withCompletionHandler: { (result) in
+                          print("setting SocketCam to supported returned \(result.rawValue)")
                         })
                     }
                 }
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
                 print("getting the Device Manager favorites returns \(result.rawValue)")
                 if result == SKTCaptureErrors.E_NOERROR {
                     if let fav = favorites {
-                        self.NFCSupportSwitch.isOn = !fav.isEmpty
+                        self.nfSupportSwitch.isOn = !fav.isEmpty
                     }
                 }
             })
@@ -74,27 +74,22 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
     override func viewDidAppear(_ animated: Bool) {
         CaptureHelper.sharedInstance.pushDelegate(self)
     }
+
     override func viewDidDisappear(_ animated: Bool) {
         CaptureHelper.sharedInstance.popDelegate(self)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
-    @IBAction func changeSoftScan(_ sender: AnyObject) {
-        if(!softscan.isOn){
-            print("disabling SoftScan...")
-            CaptureHelper.sharedInstance.setSoftScanStatus(.disable, withCompletionHandler: { (result) in
-              print("disabling softScan returned \(result.rawValue)")
+    @IBAction func changeSocketCam(_ sender: AnyObject) {
+        if(!socketCamSwitch.isOn){
+            print("disabling SocketCam...")
+            CaptureHelper.sharedInstance.setSocketCamStatus(.disable, withCompletionHandler: { (result) in
+              print("disabling SocketCam returned \(result.rawValue)")
             })
         }
         else{
-            print("enabling SoftScan...")
-            CaptureHelper.sharedInstance.setSoftScanStatus(.enable, withCompletionHandler: { (result) in
-                print("enabling softScan returned \(result.rawValue)")
+            print("enabling SocketCam...")
+            CaptureHelper.sharedInstance.setSocketCamStatus(.enable, withCompletionHandler: { (result) in
+                print("enabling SocketCam returned \(result.rawValue)")
             })
         }
     }
@@ -105,7 +100,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
             deviceManager = d
         }
         if let dm = deviceManager {
-            if !NFCSupportSwitch.isOn {
+            if !nfSupportSwitch.isOn {
                 print("turn off the NFC support...")
                 dm.setFavoriteDevices("", withCompletionHandler: { (result) in
                     print("turning off NFC support returns \(result.rawValue)")
@@ -119,9 +114,10 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
             }
         }
         else {
-            NFCSupportSwitch.isEnabled = false
+            nfSupportSwitch.isEnabled = false
         }
     }
+
     /*
     // MARK: - Navigation
 
@@ -156,7 +152,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         deviceManager = device
         deviceManager?.getFavoriteDevicesWithCompletionHandler({ (result, favorites) in
             if result == SKTCaptureErrors.E_NOERROR {
-                self.NFCSupportSwitch.isOn = !favorites!.isEmpty
+                self.nfSupportSwitch.isOn = !favorites!.isEmpty
             }
         })
     }

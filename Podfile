@@ -1,6 +1,5 @@
-
 def import_pods
-  pod 'SKTCapture', '~> 1.2'
+  pod 'CaptureSDK', '1.4.29'
 end
 
 platform :ios, '11.0'

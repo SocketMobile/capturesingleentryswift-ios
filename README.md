@@ -56,10 +56,10 @@ There is no need of a Bridging Header file.
 Here is an example of such Podfile:
 ```
 def import_pods
-  pod 'SKTCapture', '~> 1.1'
+  pod 'SKTCapture', '~> 1.4'
 end
 
-platform :ios, '8.0'
+platform :ios, '11.0'
 target 'SingleEntrySwift'
 import_pods
 
@@ -68,14 +68,14 @@ import_pods
 The source file using CaptureHelper could look like this:
 ```
 import UIKit
-import SKTCapture
+import CaptureSDK
 
 class DetailViewController: UIViewController,
   CaptureHelperDevicePresenceDelegate,
   CaptureHelperDeviceDecodedDataDelegate {
     let noScannerConnected = "No scanner connected"
     var scanners : [NSString] = []  // keep a list of scanners to display in the status
-    var softScanner : CaptureHelperDevice?  // keep a reference on the SoftScan Scanner
+    var socketCamScanner : CaptureHelperDevice?  // keep a reference on the SocketCam Scanner
 
 ...
 ```
@@ -87,13 +87,6 @@ set it back to 'DWARF' instead.
 
 ## Screenshots
 
-### Home View
-The home view shows a list view with just one item: SingleEntry.
-
-This view serves just as a demo of an application with multiple views. This view is aware about Capture, but does really nothing when a Socket Mobile device connects or scans a barcode.
-
-![Home View](./img/SingleEntryHome.png "Home View")
-
 ### Main View
 The main view shows the connection status, an edit box that receives the decoded data and a "settings" link to display the settings view.
 
@@ -102,7 +95,7 @@ When a scanner is connected, its friendly name appears in the status.
 ![Main View](./img/SingleEntryMain.png "Main View")
 
 ### Settings View
-The settings view displays the Capture version, two switches to turn on or off the SoftScan feature and the D600 support. The done link closes this view to go back to the main view.
+The settings view displays the Capture version, two switches to turn on or off the SocketCam feature and the D600 support. The done link closes this view to go back to the main view.
 
 ![ Settings View](./img/SingleEntrySettings.png "Settings View")
 
@@ -160,7 +153,7 @@ mind that the open is an asynchronous method, it will return right away.
 
 ### didNotifyArrivalForDevice
 This CaptureHelperDevicePresenceDelegate method is called when a scanner is
-successfully detected by the host. The scanner can be SoftScan or any other
+successfully detected by the host. The scanner can be SocketCam or any other
 Socket Mobile scanners supported by Capture.
 
 ### didNotifyRemovalForDevice
