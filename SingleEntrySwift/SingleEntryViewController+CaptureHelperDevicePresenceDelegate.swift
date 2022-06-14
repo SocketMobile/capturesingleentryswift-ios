@@ -15,7 +15,7 @@ extension SingleEntryViewController: CaptureHelperDevicePresenceDelegate {
     func didNotifyArrivalForDevice(_ device: CaptureHelperDevice, withResult result:SKTResult) {
         print("didNotifyArrivalForDevice in the detail view")
         let name = device.deviceInfo.name
-        if(name?.caseInsensitiveCompare("socketCam") == ComparisonResult.orderedSame){
+        if(name?.caseInsensitiveCompare("socketCam c820") == ComparisonResult.orderedSame){
             socketCamTrigger?.isHidden = false;
             socketCamContinuousScan?.isHidden = false;
             socketCam = device
