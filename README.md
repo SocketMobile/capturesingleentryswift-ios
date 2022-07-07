@@ -18,12 +18,12 @@ Make sure to contact Socket Mobile in order to whitelist your application.  You 
 **NOTE** The Socket Mobile RFID Reader/Writer uses Bluetooth Low Energy (BLE) and does not require or use External Accessory Framework, therefore it is not necessary when supporting only the Socket Mobile RFID Reader/Writer to add the `com.socketmobile.chs` in the supported external accessory protocol string.
 
 ## Prerequisites
-The Capture SDK uses CocoaPods. If it needs to be installed, please check the [CocoaPods website](https://cocoapods.org/ "CocoaPods Homepage") for the most current instructions.
+The CaptureSDK uses CocoaPods. If it needs to be installed, please check the [CocoaPods website](https://cocoapods.org/ "CocoaPods Homepage") for the most current instructions.
 
-The Socket Mobile Capture SDK is required in order to compile this sample.
+The Socket Mobile CaptureSDK is required in order to compile this sample.
 
 ## Documentation
-The Capture SDK documentation can be found [here](https://docs.socketmobile.com/capture/ios/en/latest/swift.html "Capture SDK documentation").
+The CaptureSDK documentation can be found [here](https://docs.socketmobile.com/capture/ios/en/latest/swift.html "CaptureSDK documentation").
 
 ## Installation
 The following steps show how to get and build this project.
@@ -31,8 +31,8 @@ The following steps show how to get and build this project.
 Open a Terminal window and clone the project:
 `git clone https://github.com/SocketMobile/capturesingleentryswift-ios.git && cd capturesingleentryswift-ios`
 
-Then install Socket Mobile Capture SDK:
-`pod install`
+Then install Socket Mobile CaptureSDK:
+`pod install --repo-update`
 
 Last, open the SingleEntry Xcode workspace file:
 `open SingleEntrySwift.xcworkspace`
@@ -41,25 +41,20 @@ It is important to load the SingleEntrySwift workspace (NOT PROJECT) in Xcode an
 
 Build and run the application on a device in order to test with a Socket Mobile device.
 
-## Remarks about Podfile
-There are 2 Capture Cocoapods that are provided. For a Swift project, it is better to use SKTCapture which has the CaptureHelper class written directly in Swift.
-
-The second Capture CocoaPods, SKTCaptureObjC has CaptureHelper written in Objective-C.
-
 ### use_frameworks! is no longer required
 Since cocoapods version 1.5.0 and Xcode 9, use_frameworks is no longer necessary.
 
 In this configuration the source files using Capture should include a
-`import SKTCapture` at the beginning of the source file.
+`import CaptureSDK` at the beginning of the source file.
 There is no need of a Bridging Header file.
 
 Here is an example of such Podfile:
 ```
 def import_pods
-  pod 'SKTCapture', '~> 1.4'
+  pod 'CaptureSDK', '~> 1.4'
 end
 
-platform :ios, '11.0'
+platform :ios, '14.0'
 target 'SingleEntrySwift'
 import_pods
 
@@ -110,7 +105,7 @@ The edit box receives the decoded data from the scanner.
 Since the Capture Helper is written in Swift it can be used directly in
 a Swift project.
 
-To use it in the source code, a simple `import SKTCapture` is required
+To use it in the source code, a simple `import CaptureSDK` is required
 at the beginning of the file.
 
 In this simple example the CaptureHelper is "attached" to the main view

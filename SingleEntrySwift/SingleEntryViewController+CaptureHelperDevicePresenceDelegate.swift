@@ -8,6 +8,7 @@
 
 import CaptureSDK
 
+@available(iOS 14.0, *)
 extension SingleEntryViewController: CaptureHelperDevicePresenceDelegate {
 
     // since we use CaptureHelper in shared mode, we receive a device Arrival

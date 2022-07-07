@@ -11,6 +11,8 @@
 		679FF0481A1A83C900510266 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679FF0471A1A83C900510266 /* Images.xcassets */; };
 		679FF0571A1A83C900510266 /* SingleEntrySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */; };
 		9409D10A3F4B8CFFF010B105 /* libPods-SingleEntrySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F006ED9EA8D73B354FF45E8 /* libPods-SingleEntrySwift.a */; };
+		E6109FA82875D8EF003DFB1B /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */; };
+		E62453BB2876DCDD00EC7340 /* SocketCamBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */; };
 		E65E0A4B28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */; };
 		E65E0A4C28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */; };
 		E65E0A4D28464A5A00A98FB7 /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4628464A5A00A98FB7 /* SingleEntryViewController.swift */; };
@@ -44,6 +46,8 @@
 		679FF0501A1A83C900510266 /* SingleEntrySwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingleEntrySwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF0551A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntrySwiftTests.swift; sourceTree = "<group>"; };
+		E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
+		E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCamBind.swift; sourceTree = "<group>"; };
 		E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperErrorDelegate.swift"; sourceTree = "<group>"; };
 		E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift"; sourceTree = "<group>"; };
 		E65E0A4628464A5A00A98FB7 /* SingleEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEntryViewController.swift; sourceTree = "<group>"; };
@@ -114,11 +118,13 @@
 				E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */,
 				E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */,
 				E65E0A4828464A5A00A98FB7 /* SettingsViewController.swift */,
+				E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */,
 				E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */,
 				679FF0471A1A83C900510266 /* Images.xcassets */,
 				E698986D28464D98006CC2A6 /* LaunchScreen.xib */,
 				E698986E28464D98006CC2A6 /* Main.storyboard */,
 				679FF03C1A1A83C900510266 /* Supporting Files */,
+				E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */,
 			);
 			path = SingleEntrySwift;
 			sourceTree = "<group>";
@@ -309,10 +315,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E65E0A4B28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift in Sources */,
+				E62453BB2876DCDD00EC7340 /* SocketCamBind.swift in Sources */,
 				E65E0A4D28464A5A00A98FB7 /* SingleEntryViewController.swift in Sources */,
 				E65E0A5028464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift in Sources */,
 				679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */,
 				E65E0A4C28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift in Sources */,
+				E6109FA82875D8EF003DFB1B /* SwiftUIViewController.swift in Sources */,
 				E7B2669A1D94130E00A49830 /* CaptureHelperExtension.swift in Sources */,
 				E65E0A4E28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift in Sources */,
 				E65E0A5128464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift in Sources */,
@@ -389,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DNO_HOST_ACKNOWLEDGMENT";
@@ -443,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-DNO_HOST_ACKNOWLEDGMENT";
 				SDKROOT = iphoneos;

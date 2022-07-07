@@ -122,16 +122,24 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6g-U3-ula">
-                                <rect key="frame" x="16" y="373" width="343" height="30"/>
+                                <rect key="frame" x="16" y="374" width="343" height="30"/>
                                 <state key="normal" title="SocketCam continous scan"/>
                                 <connections>
                                     <action selector="socketCamContinousScanAction:" destination="4Iq-ta-MBR" eventType="touchUpInside" id="rHl-Pq-LjD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpU-bj-HF7">
+                                <rect key="frame" x="16" y="434" width="343" height="30"/>
+                                <state key="normal" title="SocketCam launched in SwiftUI"/>
+                                <connections>
+                                    <action selector="socketCamSwiftUIAction:" destination="4Iq-ta-MBR" eventType="touchUpInside" id="6Gs-i6-Vs3"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wAD-EA-QXd" firstAttribute="trailing" secondItem="BFr-U3-rmU" secondAttribute="trailingMargin" id="1wn-dG-Ncd"/>
+                            <constraint firstItem="vpU-bj-HF7" firstAttribute="trailing" secondItem="BFr-U3-rmU" secondAttribute="trailingMargin" id="4kV-BR-UqY"/>
                             <constraint firstItem="Y4A-vZ-fWR" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="5XN-jZ-XFh"/>
                             <constraint firstItem="OEf-kg-FGj" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="270" id="AOe-ey-K6Q"/>
                             <constraint firstItem="J6g-U3-ula" firstAttribute="trailing" secondItem="BFr-U3-rmU" secondAttribute="trailingMargin" id="ATR-tx-OP8"/>
@@ -140,11 +148,13 @@
                             <constraint firstItem="5SN-j8-z3M" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="100" id="IYT-TK-tCy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5SN-j8-z3M" secondAttribute="trailing" id="Lhh-1T-EvK"/>
                             <constraint firstItem="J6g-U3-ula" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="MoI-QM-Aqp"/>
-                            <constraint firstItem="J6g-U3-ula" firstAttribute="top" secondItem="OEf-kg-FGj" secondAttribute="bottom" constant="29" id="UTY-UC-rS3"/>
+                            <constraint firstItem="vpU-bj-HF7" firstAttribute="top" secondItem="J6g-U3-ula" secondAttribute="bottom" constant="30" id="N3H-4d-AlO"/>
+                            <constraint firstItem="J6g-U3-ula" firstAttribute="top" secondItem="OEf-kg-FGj" secondAttribute="bottom" constant="30" id="UTY-UC-rS3"/>
                             <constraint firstItem="Y4A-vZ-fWR" firstAttribute="top" secondItem="jkx-3P-bak" secondAttribute="bottom" constant="217" id="WQw-Ed-Fyl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="5SN-j8-z3M" secondAttribute="leading" id="WVk-jQ-ZW5"/>
                             <constraint firstAttribute="leadingMargin" secondItem="wAD-EA-QXd" secondAttribute="leading" id="Xjs-Hf-oz3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gKJ-xG-MMg" secondAttribute="trailing" id="cXb-kh-zpP"/>
+                            <constraint firstItem="vpU-bj-HF7" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="lAM-Wz-YZV"/>
                             <constraint firstAttribute="leadingMargin" secondItem="gKJ-xG-MMg" secondAttribute="leading" id="rfE-Am-orY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y4A-vZ-fWR" secondAttribute="trailing" id="tnh-V7-JHX"/>
                             <constraint firstItem="OEf-kg-FGj" firstAttribute="leading" secondItem="BFr-U3-rmU" secondAttribute="leadingMargin" id="wPf-q3-Fe9"/>

@@ -8,6 +8,7 @@
 
 import CaptureSDK
 
+@available(iOS 14.0, *)
 extension SingleEntryViewController: CaptureHelperDeviceManagerPresenceDelegate {
 
     // THIS IS THE PLACE TO TURN ON THE BLE FEATURE SO THE NFC READER CAN

@@ -9,6 +9,7 @@
 import Foundation
 import CaptureSDK
 
+@available(iOS 14.0, *)
 extension SingleEntryViewController: CaptureHelperDevicePowerDelegate {
     
     func didChangePowerState(_ powerState: SKTCapturePowerState, forDevice device: CaptureHelperDevice) {

@@ -8,7 +8,9 @@
 
 import Foundation
 import CaptureSDK
+import UIKit
 
+@available(iOS 14.0, *)
 extension SingleEntryViewController: CaptureHelperDeviceDecodedDataDelegate {
     
     // This delegate is called each time a decoded data is read from the scanner
@@ -23,10 +25,11 @@ extension SingleEntryViewController: CaptureHelperDeviceDecodedDataDelegate {
                 let rawDataSize = rawData.count
                 print("Size: \(rawDataSize)")
                 print("data: \(rawData)")
-                let str = decodedData!.stringFromDecodedData()
+                let str = decodedData?.stringFromDecodedData()
                 print("Decoded Data \(String(describing: str))")
                 DispatchQueue.main.async {
                     self.decodedData?.text = str
+                    self.socketCamBind.decodedtring = str ?? ""
                 }
                 // this code can be removed if the application is not interested by
                 // the host Acknowledgment for the decoded data
