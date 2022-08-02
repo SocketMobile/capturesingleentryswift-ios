@@ -1,5 +1,5 @@
 PODS:
-  - CaptureSDK (1.4.49)
+  - CaptureSDK (1.4.51)
 
 DEPENDENCIES:
   - CaptureSDK (~> 1.4)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - CaptureSDK
 
 SPEC CHECKSUMS:
-  CaptureSDK: 9607ab7ba34d5c79d1b7618b37dc18e4a6b94c8d
+  CaptureSDK: 068bfdf8de360c51bd3ffadc42af0a17f5f3d1e9
 
 PODFILE CHECKSUM: c8d9257ff645a0eeb8a267652366f92e6e6433b0
 
