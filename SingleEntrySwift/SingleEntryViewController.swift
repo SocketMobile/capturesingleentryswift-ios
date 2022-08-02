@@ -89,11 +89,23 @@ class SingleEntryViewController: UIViewController {
             #endif
         })
 
+        updateUiMode()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUiMode()
+    }
+    
+    private func updateUiMode() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         // if we are showing the SocketCam Overlay view we don't
         // want to push our delegate again when our view becomes active
         if !showSocketCamOverlay {

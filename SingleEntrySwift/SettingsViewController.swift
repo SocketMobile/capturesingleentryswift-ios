@@ -12,10 +12,13 @@ import CaptureSDK
 class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceManagerPresenceDelegate{
     var detailItem: AnyObject?
     var deviceManager: CaptureHelperDeviceManager?
+    var symbologies: [SKTCaptureDataSource] = []
 
-    @IBOutlet weak var socketCamSwitch: UISwitch!
-    @IBOutlet weak var captureVersion: UILabel!
-    @IBOutlet weak var nfSupportSwitch: UISwitch!
+    @IBOutlet var socketCamSwitch: UISwitch!
+    @IBOutlet var captureVersion: UILabel!
+    @IBOutlet var nfSupportSwitch: UISwitch!
+    @IBOutlet var tableView: UITableView?
+    @IBOutlet var appVersion: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,10 +72,51 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
                 }
             })
         }
+
+        updateUiMode()
+        
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            appVersion.text = "SingleEntry Swift Version: \(version).\(build)"
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUiMode()
+    }
+
+    private func updateUiMode() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        tableView?.backgroundColor = .white
+        tableView?.backgroundView?.backgroundColor = .white
     }
 
     override func viewDidAppear(_ animated: Bool) {
         CaptureHelper.sharedInstance.pushDelegate(self)
+        
+        // Get symbologies for SocketCam
+        let devices = CaptureHelper.sharedInstance.getDevices()
+        for device in devices {
+            if device.deviceInfo.name == "SocketCam C820" {
+                for i in 0...SKTCaptureDataSourceID.lastSymbologyID.rawValue {
+                    device.getDataSourceInfoFromId(SKTCaptureDataSourceID(rawValue: i) ?? SKTCaptureDataSourceID.notSpecified) { [weak self] result, dataSourceInfo in
+                        guard let self = self else { return }
+                        print("Data source ID: \(String(describing: dataSourceInfo?.id)) - Name: \(String(describing: dataSourceInfo?.name)) - Enabled: \(String(describing: dataSourceInfo?.status.rawValue))")
+                        
+                        if let dataSource = dataSourceInfo, dataSource.status != .notSupported {
+                            self.symbologies.append(dataSource)
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                            }
+                        }
+                    }
+                    
+                }
+                break
+            }
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
