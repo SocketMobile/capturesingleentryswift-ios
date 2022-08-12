@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF03E1A1A83C900510266 /* AppDelegate.swift */; };
 		679FF0481A1A83C900510266 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679FF0471A1A83C900510266 /* Images.xcassets */; };
 		679FF0571A1A83C900510266 /* SingleEntrySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */; };
-		9409D10A3F4B8CFFF010B105 /* libPods-SingleEntrySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F006ED9EA8D73B354FF45E8 /* libPods-SingleEntrySwift.a */; };
 		E6109FA82875D8EF003DFB1B /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */; };
+		E61F50AC28A67897006D8CE2 /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E61F50AB28A67897006D8CE2 /* CaptureSDK */; };
 		E62453BB2876DCDD00EC7340 /* SocketCamBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */; };
 		E65E0A4B28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */; };
 		E65E0A4C28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */; };
@@ -38,9 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24F05887C00737B3F749CE9E /* Pods-SingleEntrySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.debug.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.debug.xcconfig"; sourceTree = "<group>"; };
-		52B36BBF86D77E72F3FDFC4D /* Pods-SingleEntrySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SingleEntrySwift.release.xcconfig"; path = "Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift.release.xcconfig"; sourceTree = "<group>"; };
-		5F006ED9EA8D73B354FF45E8 /* libPods-SingleEntrySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SingleEntrySwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF0391A1A83C900510266 /* SingleEntrySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleEntrySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF03D1A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679FF03E1A1A83C900510266 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9409D10A3F4B8CFFF010B105 /* libPods-SingleEntrySwift.a in Frameworks */,
+				E61F50AC28A67897006D8CE2 /* CaptureSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +83,6 @@
 		4F62F26EC24D93D7F6216AA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5F006ED9EA8D73B354FF45E8 /* libPods-SingleEntrySwift.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,7 +93,6 @@
 				679FF03B1A1A83C900510266 /* SingleEntrySwift */,
 				679FF0531A1A83C900510266 /* SingleEntrySwiftTests */,
 				679FF03A1A1A83C900510266 /* Products */,
-				FD0E48DA0B05BDD9490A7370 /* Pods */,
 				4F62F26EC24D93D7F6216AA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -160,15 +155,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FD0E48DA0B05BDD9490A7370 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				24F05887C00737B3F749CE9E /* Pods-SingleEntrySwift.debug.xcconfig */,
-				52B36BBF86D77E72F3FDFC4D /* Pods-SingleEntrySwift.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,17 +162,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 679FF05A1A1A83C900510266 /* Build configuration list for PBXNativeTarget "SingleEntrySwift" */;
 			buildPhases = (
-				A341DC5CBBA21AB23EB56097 /* [CP] Check Pods Manifest.lock */,
 				679FF0351A1A83C900510266 /* Sources */,
 				679FF0361A1A83C900510266 /* Frameworks */,
 				679FF0371A1A83C900510266 /* Resources */,
-				CE282ED2BB4F2E1F971B0719 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SingleEntrySwift;
+			packageProductDependencies = (
+				E61F50AB28A67897006D8CE2 /* CaptureSDK */,
+			);
 			productName = SingleEntrySwift;
 			productReference = 679FF0391A1A83C900510266 /* SingleEntrySwift.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +229,9 @@
 				Base,
 			);
 			mainGroup = 679FF0301A1A83C900510266;
+			packageReferences = (
+				E61F50AA28A67897006D8CE2 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */,
+			);
 			productRefGroup = 679FF03A1A1A83C900510266 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,49 +261,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A341DC5CBBA21AB23EB56097 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SingleEntrySwift-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE282ED2BB4F2E1F971B0719 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CaptureSDK/CaptureSDK.framework/CaptureSDK",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CaptureSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SingleEntrySwift/Pods-SingleEntrySwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		679FF0351A1A83C900510266 /* Sources */ = {
@@ -463,8 +410,9 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-DNO_HOST_ACKNOWLEDGMENT";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -472,26 +420,26 @@
 		};
 		679FF05B1A1A83C900510266 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24F05887C00737B3F749CE9E /* Pods-SingleEntrySwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					"COCOAPODS=1",
 					"HOST_ACKNOWLEDGMENT=1",
 				);
 				INFOPLIST_FILE = SingleEntrySwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
 					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/Capture\"",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
@@ -504,26 +452,26 @@
 		};
 		679FF05C1A1A83C900510266 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52B36BBF86D77E72F3FDFC4D /* Pods-SingleEntrySwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					"COCOAPODS=1",
 					"HOST_ACKNOWLEDGMENT=1",
 				);
 				INFOPLIST_FILE = SingleEntrySwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
 					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/Capture\"",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
@@ -547,7 +495,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SingleEntrySwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.socketmobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -565,7 +517,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SingleEntrySwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.socketmobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -605,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E61F50AA28A67897006D8CE2 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk";
+			requirement = {
+				kind = exactVersion;
+				version = 1.4.57;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E61F50AB28A67897006D8CE2 /* CaptureSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E61F50AA28A67897006D8CE2 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */;
+			productName = CaptureSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 679FF0311A1A83C900510266 /* Project object */;
 }

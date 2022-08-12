@@ -2,12 +2,7 @@
 Simple iOS app showing the use of Capture SDK.
 
 ## IMPORTANT
-When using/installing CocoaPods in a new project, the project workspace file should be used instead of the project file.
-
-The Socket Mobile Bluetooth barcode scanners use the External Accessory Framework.
-
-It is very important to make sure your application info plist file contains the supported external accessory protocol string array `com.socketmobile.chs`.
-![Project Settings](./img/SingleEntryProjectSettings.png "SingleEntry Project Settings")
+CaptureSDK is using [Swift Package Manager](https://www.swift.org/package-manager/).
 
 The previous version of iOS used to give an error message in the traces when a barcode scanner connects to the iOS device and the protocol string was omitted, but that is no longer the case with the most recent version of iOS.
 
@@ -17,9 +12,6 @@ Make sure to contact Socket Mobile in order to whitelist your application.  You 
 
 **NOTE** The Socket Mobile RFID Reader/Writer uses Bluetooth Low Energy (BLE) and does not require or use External Accessory Framework, therefore it is not necessary when supporting only the Socket Mobile RFID Reader/Writer to add the `com.socketmobile.chs` in the supported external accessory protocol string.
 
-## Prerequisites
-The CaptureSDK uses CocoaPods. If it needs to be installed, please check the [CocoaPods website](https://cocoapods.org/ "CocoaPods Homepage") for the most current instructions.
-
 The Socket Mobile CaptureSDK is required in order to compile this sample.
 
 ## Documentation
@@ -28,37 +20,24 @@ The CaptureSDK documentation can be found [here](https://docs.socketmobile.com/c
 ## Installation
 The following steps show how to get and build this project.
 
-Open a Terminal window and clone the project:
-`git clone https://github.com/SocketMobile/capturesingleentryswift-ios.git && cd capturesingleentryswift-ios`
+First, you need to install Xcode.
 
-Then install Socket Mobile CaptureSDK:
-`pod install --repo-update`
+To include the SDK in your Xcode project you have to add a `Package Dependency` in the project's settings section and in the tab "Package Dependencies".
 
-Last, open the SingleEntry Xcode workspace file:
-`open SingleEntrySwift.xcworkspace`
+Add the url of this repository: [https://github.com/SocketMobile/swift-package-capturesdk.git](https://github.com/SocketMobile/swift-package-capturesdk.git)
 
-It is important to load the SingleEntrySwift workspace (NOT PROJECT) in Xcode and compile and run.
+![Add the Package to the project](./img/add-to-your-project.png)
+
+Once you have added the package, you should see `CaptureSDK` added to your Package Dependencies in Xcode's Project Navigator as follow:
+
+![Added Package to the project](./img/added-to-your-project.png)
+
+The Socket Mobile Bluetooth barcode scanners use the External Accessory Framework.
+
+It is very important to make sure your application info plist file contains the supported external accessory protocol string array `com.socketmobile.chs`.
+![Project Settings](./img/SingleEntryProjectSettings.png "SingleEntry Project Settings")
 
 Build and run the application on a device in order to test with a Socket Mobile device.
-
-### use_frameworks! is no longer required
-Since cocoapods version 1.5.0 and Xcode 9, use_frameworks is no longer necessary.
-
-In this configuration the source files using Capture should include a
-`import CaptureSDK` at the beginning of the source file.
-There is no need of a Bridging Header file.
-
-Here is an example of such Podfile:
-```
-def import_pods
-  pod 'CaptureSDK', '~> 1.4'
-end
-
-platform :ios, '14.0'
-target 'SingleEntrySwift'
-import_pods
-
-```
 
 The source file using CaptureHelper could look like this:
 ```
@@ -74,11 +53,6 @@ class DetailViewController: UIViewController,
 
 ...
 ```
-
-## IMPORTANT NOTES
-In Xcode the debug information format in the build options is set by default to
-'DWARF with DSYM file'. This is causing numerous warnings. It is recommended to
-set it back to 'DWARF' instead.
 
 ## Screenshots
 
@@ -168,7 +142,7 @@ to create a CaptureHelper extension and copy paste a feature similar from
 CaptureHelper class to the extended one.
 
 Following this recommendation will prevent to lose the modifications at the
-next update of the Capture CocoaPods.
+next update of the CaptureSDK Swift Package Manager.
 
 An example of this **CaptureHelper extension** is shown in the CaptureHelperExtension.swift
 

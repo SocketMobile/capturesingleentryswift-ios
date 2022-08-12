@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-package-capturesdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SocketMobile/swift-package-capturesdk",
+      "state" : {
+        "revision" : "96b24155b2ae2646e02e57ef4c8a36cc5c693abc",
+        "version" : "1.4.57"
+      }
+    }
+  ],
+  "version" : 2
+}
