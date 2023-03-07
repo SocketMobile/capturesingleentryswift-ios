@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SocketMobile/swift-package-capturesdk",
       "state" : {
-        "revision" : "4fad3120649dbba818997d8fe960770e9be267b9",
-        "version" : "1.5.2"
+        "revision" : "71c4e58392a4ad0ac91540b96619079e0364c8ed",
+        "version" : "1.6.30"
       }
     }
   ],

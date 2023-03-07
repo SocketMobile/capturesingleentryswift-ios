@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF03E1A1A83C900510266 /* AppDelegate.swift */; };
 		679FF0481A1A83C900510266 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679FF0471A1A83C900510266 /* Images.xcassets */; };
 		679FF0571A1A83C900510266 /* SingleEntrySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */; };
-		E6109FA82875D8EF003DFB1B /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */; };
 		E61F50AC28A67897006D8CE2 /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E61F50AB28A67897006D8CE2 /* CaptureSDK */; };
-		E62453BB2876DCDD00EC7340 /* SocketCamBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */; };
-		E65E0A4B28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */; };
-		E65E0A4C28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */; };
-		E65E0A4D28464A5A00A98FB7 /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4628464A5A00A98FB7 /* SingleEntryViewController.swift */; };
-		E65E0A4E28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4728464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift */; };
-		E65E0A4F28464A5A00A98FB7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4828464A5A00A98FB7 /* SettingsViewController.swift */; };
-		E65E0A5028464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4928464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift */; };
-		E65E0A5128464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E0A4A28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift */; };
 		E698986F28464D98006CC2A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E698986D28464D98006CC2A6 /* LaunchScreen.xib */; };
 		E698987028464D98006CC2A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E698986E28464D98006CC2A6 /* Main.storyboard */; };
-		E69FCBB428996FF100ADBC9B /* SettingsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FCBB328996FF100ADBC9B /* SettingsViewController+UITableViewDelegate.swift */; };
-		E69FCBB62899700A00ADBC9B /* SettingsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FCBB52899700A00ADBC9B /* SettingsViewController+UITableViewDataSource.swift */; };
-		E7B2669A1D94130E00A49830 /* CaptureHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */; };
+		E6DAFD3829B778A600D32AF6 /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2529B778A500D32AF6 /* SingleEntryViewController.swift */; };
+		E6DAFD3929B778A600D32AF6 /* CaptureHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2629B778A500D32AF6 /* CaptureHelperExtension.swift */; };
+		E6DAFD3A29B778A600D32AF6 /* SettingsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2729B778A500D32AF6 /* SettingsViewController+UITableViewDelegate.swift */; };
+		E6DAFD3B29B778A600D32AF6 /* SingleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2829B778A500D32AF6 /* SingleEntry.swift */; };
+		E6DAFD3C29B778A600D32AF6 /* DeviceTriggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2929B778A500D32AF6 /* DeviceTriggerViewController.swift */; };
+		E6DAFD3D29B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2A29B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift */; };
+		E6DAFD3E29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePowerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2B29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePowerDelegate.swift */; };
+		E6DAFD3F29B778A600D32AF6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2C29B778A600D32AF6 /* SettingsViewController.swift */; };
+		E6DAFD4029B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePresenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2D29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePresenceDelegate.swift */; };
+		E6DAFD4129B778A600D32AF6 /* SocketCamBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2E29B778A600D32AF6 /* SocketCamBind.swift */; };
+		E6DAFD4229B778A600D32AF6 /* SettingsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD2F29B778A600D32AF6 /* SettingsViewController+UITableViewDataSource.swift */; };
+		E6DAFD4329B778A600D32AF6 /* DeviceThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3029B778A600D32AF6 /* DeviceThemesViewController.swift */; };
+		E6DAFD4429B778A600D32AF6 /* DevicePowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3129B778A600D32AF6 /* DevicePowerViewController.swift */; };
+		E6DAFD4529B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3229B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift */; };
+		E6DAFD4629B778A600D32AF6 /* SingleEntry+CaptureHelperErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3329B778A600D32AF6 /* SingleEntry+CaptureHelperErrorDelegate.swift */; };
+		E6DAFD4729B778A600D32AF6 /* ChoiceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3429B778A600D32AF6 /* ChoiceListViewController.swift */; };
+		E6DAFD4829B778A600D32AF6 /* SocketCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3529B778A600D32AF6 /* SocketCamViewController.swift */; };
+		E6DAFD4929B778A600D32AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3629B778A600D32AF6 /* AppDelegate.swift */; };
+		E6DAFD4A29B778A600D32AF6 /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAFD3729B778A600D32AF6 /* SwiftUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,25 +46,31 @@
 /* Begin PBXFileReference section */
 		679FF0391A1A83C900510266 /* SingleEntrySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleEntrySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF03D1A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		679FF03E1A1A83C900510266 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		679FF0471A1A83C900510266 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		679FF0501A1A83C900510266 /* SingleEntrySwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingleEntrySwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		679FF0551A1A83C900510266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679FF0561A1A83C900510266 /* SingleEntrySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntrySwiftTests.swift; sourceTree = "<group>"; };
-		E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
-		E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCamBind.swift; sourceTree = "<group>"; };
-		E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperErrorDelegate.swift"; sourceTree = "<group>"; };
-		E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift"; sourceTree = "<group>"; };
-		E65E0A4628464A5A00A98FB7 /* SingleEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEntryViewController.swift; sourceTree = "<group>"; };
-		E65E0A4728464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift"; sourceTree = "<group>"; };
-		E65E0A4828464A5A00A98FB7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E65E0A4928464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift"; sourceTree = "<group>"; };
-		E65E0A4A28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift"; sourceTree = "<group>"; };
 		E698986D28464D98006CC2A6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E698986E28464D98006CC2A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E69FCBB328996FF100ADBC9B /* SettingsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		E69FCBB52899700A00ADBC9B /* SettingsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
-		E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureHelperExtension.swift; sourceTree = "<group>"; };
+		E6DAFD2529B778A500D32AF6 /* SingleEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEntryViewController.swift; sourceTree = "<group>"; };
+		E6DAFD2629B778A500D32AF6 /* CaptureHelperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureHelperExtension.swift; sourceTree = "<group>"; };
+		E6DAFD2729B778A500D32AF6 /* SettingsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD2829B778A500D32AF6 /* SingleEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEntry.swift; sourceTree = "<group>"; };
+		E6DAFD2929B778A500D32AF6 /* DeviceTriggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTriggerViewController.swift; sourceTree = "<group>"; };
+		E6DAFD2A29B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD2B29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePowerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntry+CaptureHelperDevicePowerDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD2C29B778A600D32AF6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E6DAFD2D29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePresenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntry+CaptureHelperDevicePresenceDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD2E29B778A600D32AF6 /* SocketCamBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketCamBind.swift; sourceTree = "<group>"; };
+		E6DAFD2F29B778A600D32AF6 /* SettingsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		E6DAFD3029B778A600D32AF6 /* DeviceThemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceThemesViewController.swift; sourceTree = "<group>"; };
+		E6DAFD3129B778A600D32AF6 /* DevicePowerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicePowerViewController.swift; sourceTree = "<group>"; };
+		E6DAFD3229B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD3329B778A600D32AF6 /* SingleEntry+CaptureHelperErrorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SingleEntry+CaptureHelperErrorDelegate.swift"; sourceTree = "<group>"; };
+		E6DAFD3429B778A600D32AF6 /* ChoiceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceListViewController.swift; sourceTree = "<group>"; };
+		E6DAFD3529B778A600D32AF6 /* SocketCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketCamViewController.swift; sourceTree = "<group>"; };
+		E6DAFD3629B778A600D32AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6DAFD3729B778A600D32AF6 /* SwiftUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,23 +121,29 @@
 		679FF03B1A1A83C900510266 /* SingleEntrySwift */ = {
 			isa = PBXGroup;
 			children = (
-				679FF03E1A1A83C900510266 /* AppDelegate.swift */,
-				E65E0A4628464A5A00A98FB7 /* SingleEntryViewController.swift */,
-				E65E0A4928464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift */,
-				E65E0A4A28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift */,
-				E65E0A4728464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift */,
-				E65E0A4528464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift */,
-				E65E0A4428464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift */,
-				E65E0A4828464A5A00A98FB7 /* SettingsViewController.swift */,
-				E69FCBB52899700A00ADBC9B /* SettingsViewController+UITableViewDataSource.swift */,
-				E69FCBB328996FF100ADBC9B /* SettingsViewController+UITableViewDelegate.swift */,
-				E6109FA72875D8EF003DFB1B /* SwiftUIViewController.swift */,
-				E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */,
+				E6DAFD3629B778A600D32AF6 /* AppDelegate.swift */,
+				E6DAFD2629B778A500D32AF6 /* CaptureHelperExtension.swift */,
+				E6DAFD3429B778A600D32AF6 /* ChoiceListViewController.swift */,
+				E6DAFD3129B778A600D32AF6 /* DevicePowerViewController.swift */,
+				E6DAFD3029B778A600D32AF6 /* DeviceThemesViewController.swift */,
+				E6DAFD2929B778A500D32AF6 /* DeviceTriggerViewController.swift */,
+				E6DAFD2C29B778A600D32AF6 /* SettingsViewController.swift */,
+				E6DAFD2F29B778A600D32AF6 /* SettingsViewController+UITableViewDataSource.swift */,
+				E6DAFD2729B778A500D32AF6 /* SettingsViewController+UITableViewDelegate.swift */,
+				E6DAFD2829B778A500D32AF6 /* SingleEntry.swift */,
+				E6DAFD3229B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift */,
+				E6DAFD2A29B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift */,
+				E6DAFD2B29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePowerDelegate.swift */,
+				E6DAFD2D29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePresenceDelegate.swift */,
+				E6DAFD3329B778A600D32AF6 /* SingleEntry+CaptureHelperErrorDelegate.swift */,
+				E6DAFD2529B778A500D32AF6 /* SingleEntryViewController.swift */,
+				E6DAFD2E29B778A600D32AF6 /* SocketCamBind.swift */,
+				E6DAFD3529B778A600D32AF6 /* SocketCamViewController.swift */,
+				E6DAFD3729B778A600D32AF6 /* SwiftUIViewController.swift */,
 				679FF0471A1A83C900510266 /* Images.xcassets */,
 				E698986D28464D98006CC2A6 /* LaunchScreen.xib */,
 				E698986E28464D98006CC2A6 /* Main.storyboard */,
 				679FF03C1A1A83C900510266 /* Supporting Files */,
-				E62453BA2876DCDD00EC7340 /* SocketCamBind.swift */,
 			);
 			path = SingleEntrySwift;
 			sourceTree = "<group>";
@@ -210,7 +228,7 @@
 					679FF0381A1A83C900510266 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = GCJ274LWEE;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1420;
 					};
 					679FF04F1A1A83C900510266 = {
 						CreatedOnToolsVersion = 6.1;
@@ -267,19 +285,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E65E0A4B28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperErrorDelegate.swift in Sources */,
-				E62453BB2876DCDD00EC7340 /* SocketCamBind.swift in Sources */,
-				E65E0A4D28464A5A00A98FB7 /* SingleEntryViewController.swift in Sources */,
-				E65E0A5028464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceDecodedDataDelegate.swift in Sources */,
-				679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */,
-				E65E0A4C28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePresenceDelegate.swift in Sources */,
-				E69FCBB62899700A00ADBC9B /* SettingsViewController+UITableViewDataSource.swift in Sources */,
-				E6109FA82875D8EF003DFB1B /* SwiftUIViewController.swift in Sources */,
-				E7B2669A1D94130E00A49830 /* CaptureHelperExtension.swift in Sources */,
-				E65E0A4E28464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDevicePowerDelegate.swift in Sources */,
-				E65E0A5128464A5A00A98FB7 /* SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift in Sources */,
-				E69FCBB428996FF100ADBC9B /* SettingsViewController+UITableViewDelegate.swift in Sources */,
-				E65E0A4F28464A5A00A98FB7 /* SettingsViewController.swift in Sources */,
+				E6DAFD3C29B778A600D32AF6 /* DeviceTriggerViewController.swift in Sources */,
+				E6DAFD3B29B778A600D32AF6 /* SingleEntry.swift in Sources */,
+				E6DAFD4629B778A600D32AF6 /* SingleEntry+CaptureHelperErrorDelegate.swift in Sources */,
+				E6DAFD3929B778A600D32AF6 /* CaptureHelperExtension.swift in Sources */,
+				E6DAFD4829B778A600D32AF6 /* SocketCamViewController.swift in Sources */,
+				E6DAFD4529B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceDecodedDataDelegate.swift in Sources */,
+				E6DAFD4129B778A600D32AF6 /* SocketCamBind.swift in Sources */,
+				E6DAFD3E29B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePowerDelegate.swift in Sources */,
+				E6DAFD3A29B778A600D32AF6 /* SettingsViewController+UITableViewDelegate.swift in Sources */,
+				E6DAFD3829B778A600D32AF6 /* SingleEntryViewController.swift in Sources */,
+				E6DAFD4229B778A600D32AF6 /* SettingsViewController+UITableViewDataSource.swift in Sources */,
+				E6DAFD4A29B778A600D32AF6 /* SwiftUIViewController.swift in Sources */,
+				E6DAFD4329B778A600D32AF6 /* DeviceThemesViewController.swift in Sources */,
+				E6DAFD4929B778A600D32AF6 /* AppDelegate.swift in Sources */,
+				E6DAFD4429B778A600D32AF6 /* DevicePowerViewController.swift in Sources */,
+				E6DAFD3D29B778A600D32AF6 /* SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift in Sources */,
+				E6DAFD3F29B778A600D32AF6 /* SettingsViewController.swift in Sources */,
+				E6DAFD4029B778A600D32AF6 /* SingleEntry+CaptureHelperDevicePresenceDelegate.swift in Sources */,
+				E6DAFD4729B778A600D32AF6 /* ChoiceListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 12;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -445,7 +470,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.socketmobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -454,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 12;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -477,7 +503,6 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.socketmobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -485,6 +510,7 @@
 		679FF05E1A1A83C900510266 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -511,6 +537,7 @@
 		679FF05F1A1A83C900510266 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -568,7 +595,7 @@
 			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk";
 			requirement = {
 				kind = exactVersion;
-				version = 1.5.2;
+				version = 1.6.30;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -1,5 +1,5 @@
 //
-//  SingleEntry.swift
+//  SingleEntryViewController.swift
 //  SingleEntrySwift
 //
 //  Created by Cyrille on 24.03.22.
@@ -8,41 +8,25 @@
 
 import Foundation
 import CaptureSDK
-import SwiftUI
 import UIKit
 
-@available(iOS 14.0, *)
+
 class SingleEntryViewController: UIViewController {
-  
+    
     @IBOutlet var connectionStatus: UILabel?
-    @IBOutlet var statusLabel: UILabel?
     @IBOutlet var decodedData: UITextField?
-    @IBOutlet var socketCamTrigger: UIButton?
-    @IBOutlet var socketCamContinuousScan: UIButton?
-
-    let noScannerConnected = "No scanner connected"
-    var scanners : [String] = []  // keep a list of scanners to display in the status
-    var socketCam : CaptureHelperDevice?  // keep a reference on the SocketCam Scanner
-    var lastDeviceConnected : CaptureHelperDevice?
-    var detailItem: AnyObject?
-    var showSocketCamOverlay = false
+    @IBOutlet var containerView: UIView?
+    
+    let socketCamBind = SocketCamBind() // for SwiftUI sample
     var showSocketCamSwiftUI = false
-    var objects = NSMutableArray()
-    let socketCamBind = SocketCamBind()
+    var choiceViewController: ChoiceListViewController?
+    var choiceNavigationViewController: UINavigationController?
+    var devicePowerViewController: DevicePowerViewController?
 
-    // Capture Helper shareInstance allows to share
-    // the same instance of Capture Helper with the
-    // entire application. That static property can
-    // be used in any views but it is recommended
-    // to open only once Capture Helper (in the main
-    // view controller) and pushDelegate, popDelegate
-    // each time a new view requiring scanning capability
-    // is loaded or unloaded respectively.
     var captureHelper = CaptureHelper.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
         // fill out the App Info with the Bundle ID which should start by the
         // platform on which the application is running and followed with the
@@ -54,158 +38,83 @@ class SingleEntryViewController: UIViewController {
         AppInfo.appKey = "MC0CFQD1tdTpaABkppmG+iP3dB9kolYVtwIUY8c3UmEfaPoTI3AxbPOTpNgw+fo="
         AppInfo.appID = "ios:com.socketmobile.SingleEntrySwift"
         AppInfo.developerID = "bb57d8e1-f911-47ba-b510-693be162686a"
-        
-        socketCamTrigger?.isHidden = true
-        socketCamContinuousScan?.isHidden = true
-        decodedData?.overrideUserInterfaceStyle = .light
 
-        // there is a stack of delegates the last push is the
-        // delegate active, when a new view requiring notifications from the
-        // scanner, then push its delegate and pop its delegate when the
-        // view is done
-        captureHelper.pushDelegate(self)
-        
-        // to make all the delegates able to update the UI without the app
-        // having to dispatch the UI update code, set the dispatchQueue
-        // property to the DispatchQueue.main
-        captureHelper.dispatchQueue = DispatchQueue.main
+            // there is a stack of delegates the last push is the
+            // delegate active, when a new view requiring notifications from the
+            // scanner, then push its delegate and pop its delegate when the
+            // view is done
+            captureHelper.pushDelegate(SingleEntry.shared)
+            
+            // to make all the delegates able to update the UI without the app
+            // having to dispatch the UI update code, set the dispatchQueue
+            // property to the DispatchQueue.main
+            captureHelper.dispatchQueue = DispatchQueue.main
 
-        // open Capture Helper only once in the application
-        captureHelper.openWithAppInfo(AppInfo, withCompletionHandler: { (_ result: SKTResult) in
+            // open Capture Helper only once in the application
+            captureHelper.openWithAppInfo(AppInfo, withCompletionHandler: { (_ result: SKTResult) in
             print("Result of Capture initialization: \(result.rawValue)")
             // if you don't need host Acknowledgment, and use the
             // scanner acknowledgment, then these few lines can be
             // removed (from the #if to the #endif)
             #if HOST_ACKNOWLEDGMENT
-                self.captureHelper.setConfirmationMode(confirmationMode: .modeApp, withCompletionHandler: { result in
+                self.captureHelper.setConfirmationMode(confirmationMode: .modeApp, withCompletionHandler: { (result) in
                     print("Data Confirmation Mode returns : \(result.rawValue)")
                 })
-            // to remove the Host Acknowledgment if it was set before
-            // put back to the default Scanner Acknowledgment also called Local Acknowledgment
+                    // to remove the Host Acknowledgment if it was set before
+                    // put back to the default Scanner Acknowledgment also called Local Acknowledgment
             #else
                 self.captureHelper.setConfirmationMode(.modeDevice, withCompletionHandler: { (result) in
                     print("Data Confirmation Mode returns : \(result.rawValue)")
                 })
             #endif
         })
-
-        updateUiMode()
+        
+        SingleEntry.shared.delegate = self
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        updateUiMode()
-    }
-    
-    private func updateUiMode() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // if we are showing the SocketCam Overlay view we don't
-        // want to push our delegate again when our view becomes active
-        if !showSocketCamOverlay {
-            // since we use CaptureHelper in shared mode, we push this
-            // view controller delegate to the CaptureHelper delegates stack
-            captureHelper.pushDelegate(self)
-        }
-        showSocketCamOverlay = false
-        showSocketCamSwiftUI = false
+            
+        CaptureHelper.sharedInstance.pushDelegate(SingleEntry.shared)
         displayScanners()
+        
+        decodedData?.resignFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // if we are showing the SocketCam Overlay view we don't
-        // want to remove our delegate from the CaptureHelper delegates stack
-        if !showSocketCamOverlay {
-            // remove all the scanner names from the list
-            // because in CaptureHelper shared mode we will receive again
-            // the deviceArrival for each connected scanner once this view
-            // becomes active again
-            scanners = []
-            socketCamTrigger?.isHidden = true
-            socketCamContinuousScan?.isHidden = true
-            
-            // Let's keep the delegate on this view controller
-            // to set the binding value of the decoded string for the SwiftUI view
-            if !showSocketCamSwiftUI {
-                captureHelper.popDelegate(self)
+        SingleEntry.shared.scanners = []
+        CaptureHelper.sharedInstance.popDelegate(SingleEntry.shared)
+        
+        decodedData?.resignFirstResponder()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ChoiceViewController" {
+            choiceNavigationViewController = segue.destination as? UINavigationController
+            if let choiceViewController = choiceNavigationViewController?.viewControllers.first as? ChoiceListViewController {
+                self.choiceViewController = choiceViewController
             }
         }
     }
-
-    @IBAction func socketCamAction(_ sender: AnyObject) {
-        if let scanner = socketCam as CaptureHelperDevice? {
-            showSocketCamOverlay = true
-            scanner.setTrigger(.start, withCompletionHandler: { result in
-                self.displayAlertForResult(result, forOperation: "SetTrigger")
-                if result != .E_NOERROR {
-                    self.showSocketCamOverlay = false
-                }
-            })
-        }
-        else if let device = lastDeviceConnected {
-            device.setTrigger(.start, withCompletionHandler: { result in
-                print("triggering the device returns: \(result.rawValue)")
-            })
-        }
-    }
-
-    @IBAction func socketCamContinousScanAction(_ sender: AnyObject) {
-        if let scanner = socketCam as CaptureHelperDevice? {
-            showSocketCamOverlay = true
-            scanner.setTrigger(.continuousScan, withCompletionHandler: { result in
-                self.displayAlertForResult(result, forOperation: "SetTrigger")
-                if result != .E_NOERROR {
-                    self.showSocketCamOverlay = false
-                }
-            })
-        }
-        else if let device = lastDeviceConnected {
-            device.setTrigger(.continuousScan, withCompletionHandler: { result in
-                print("triggering the device returns: \(result.rawValue)")
-            })
-        }
-    }
-
-    @IBAction func socketCamSwiftUIAction(_ sender: AnyObject) {
-        if let scanner = socketCam as CaptureHelperDevice? {
-            showSocketCamOverlay = true
-            showSocketCamSwiftUI = true
-
-            // Pass the SocketCam instance to the ObservedObject for the SwiftUI view
-            socketCamBind.socketCam = scanner
-
-            // Creating a View controller with a SwiftUI view containing a binding to SocketCam and the decoded string
-            let swiftUIViewController = UIHostingController(rootView: ContentView(socketCamBind: socketCamBind))
-            swiftUIViewController.title = "SwiftUI"
-            self.navigationController?.pushViewController(swiftUIViewController, animated: true)
-        }
-    }
-
 
     // MARK: - Utility functions
 
     func displayScanners() {
         if let status = connectionStatus {
-            // the main dispatch queue is required to update the UI
-            // or the delegateDispatchQueue CaptureHelper property
-            // can be set instead
-//            DispatchQueue.main.async() {
+            // the main dispatch queue is required to update the UI or the delegateDispatchQueue CaptureHelper property can be set instead
+            DispatchQueue.main.async() {
                 status.text = ""
-                for scanner in scanners {
+                if SingleEntry.shared.scanners.count == 0 {
+                    status.text = SingleEntry.shared.noScannerConnected
+                } else if status.text != "" {
+                    status.text?.removeLast()
+                }
+                for scanner in SingleEntry.shared.scanners {
                     status.text = status.text! + (scanner as String) + "\n"
                 }
-                if scanners.count == 0 {
-                    status.text = noScannerConnected
-                }
-//            }
+            }
         }
     }
 
@@ -218,16 +127,39 @@ class SingleEntryViewController: UIViewController {
         }
     }
 
-    // MARK: - Helper functions
+}
 
-    func displayBatteryLevel(_ level: UInt?, fromDevice device: CaptureHelperDevice, withResult result: SKTResult) {
-        if result != .E_NOERROR {
-            print("error while getting the device battery level: \(result.rawValue)")
-        }
-        else {
-            let battery = SKTHelper.getCurrentLevel(fromBatteryLevel: Int(level!))
-            print("the device \((device.deviceInfo.name)! as String) has a battery level: \(String(describing: battery))%")
+extension SingleEntryViewController: SingleEntryDelegate {
+    
+    func notifyDevicePresence() {
+        displayScanners()
+        choiceViewController?.updateList()
+    }
+    
+    func notifyDeviceManagerPresence() {
+        displayScanners()
+        choiceViewController?.updateList()
+    }
+    
+    func notifyDecodedDataString(dataString: String) {
+        decodedData?.text = dataString
+        socketCamBind.decodedtring = dataString
+    }
+       
+    func notifyPowerState(_ powerState: SKTCapturePowerState) {
+        if choiceNavigationViewController?.viewControllers.last is DevicePowerViewController {
+            devicePowerViewController = choiceNavigationViewController?.viewControllers.last as? DevicePowerViewController
+            devicePowerViewController?.updatePowerState(powerState)
         }
     }
+    
+    func notifyBatteryLevel(_ batteryLevel: Int) {
+        if choiceNavigationViewController?.viewControllers.last is DevicePowerViewController {
+            devicePowerViewController = choiceNavigationViewController?.viewControllers.last as? DevicePowerViewController
+            devicePowerViewController?.updateBattery(batteryLevel)
+        }
+    }
+    
+    func notifyError(_ error: SKTResult) {}
 
 }

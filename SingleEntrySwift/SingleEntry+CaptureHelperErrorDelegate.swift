@@ -1,5 +1,5 @@
 //
-//  SingleEntryViewController+CaptureHelperErrorDelegate.swift
+//  SingleEntry+CaptureHelperErrorDelegate.swift
 //  SingleEntrySwift
 //
 //  Created by Cyrille on 24.03.22.
@@ -8,11 +8,12 @@
 
 import CaptureSDK
 
-@available(iOS 14.0, *)
-extension SingleEntryViewController: CaptureHelperErrorDelegate {
-    
+
+extension SingleEntry: CaptureHelperErrorDelegate {
+
     func didReceiveError(_ error: SKTResult) {
         print("Receive a Capture error: \(error.rawValue)")
+        delegate?.notifyError(error)
     }
 
 }
