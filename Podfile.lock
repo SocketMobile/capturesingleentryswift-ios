@@ -1,16 +1,16 @@
 PODS:
-  - CaptureSDK (1.5.2)
+  - CaptureSDK (1.6.30)
 
 DEPENDENCIES:
-  - CaptureSDK (~> 1.5)
+  - CaptureSDK (~> 1.6)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - CaptureSDK
 
 SPEC CHECKSUMS:
-  CaptureSDK: d4af475179be4db4bc02e50bdfd864c4995c0ace
+  CaptureSDK: fe0398a49374134f12007a7df458547dd84ecac7
 
-PODFILE CHECKSUM: 3587c55e2fbf88d51693c66691fa984178d69234
+PODFILE CHECKSUM: 057edbea477aaa82a748924b10adb6c44f20fef5
 
 COCOAPODS: 1.11.3

@@ -1,5 +1,5 @@
 //
-//  SingleEntryViewController+CaptureHelperDeviceManagerPresenceDelegate.swift
+//  SingleEntry+CaptureHelperDeviceManagerPresenceDelegate.swift
 //  SingleEntrySwift
 //
 //  Created by Cyrille on 24.03.22.
@@ -8,8 +8,8 @@
 
 import CaptureSDK
 
-@available(iOS 14.0, *)
-extension SingleEntryViewController: CaptureHelperDeviceManagerPresenceDelegate {
+
+extension SingleEntry: CaptureHelperDeviceManagerPresenceDelegate {
 
     // THIS IS THE PLACE TO TURN ON THE BLE FEATURE SO THE NFC READER CAN
     // BE DISCOVERED AND CONNECT TO THIS APP
@@ -22,38 +22,38 @@ extension SingleEntryViewController: CaptureHelperDeviceManagerPresenceDelegate 
         device.getFavoriteDevicesWithCompletionHandler { (result, favorites) in
             print("getting the favorite devices returned \(result.rawValue)")
             if result == .E_NOERROR {
-                if let fav = favorites {
-                    // if favorites is empty (meaning NFC reader auto-discovery is off)
-                    // then set it to "*" to connect to any NFC reader in the vicinity
-                    // To turn off the BLE auto reconnection, set the favorites to
-                    // an empty string
-                    if fav.isEmpty {
+//                if let fav = favorites {
+//                    // if favorites is empty (meaning NFC reader auto-discovery is off)
+//                    // then set it to "*" to connect to any NFC reader in the vicinity
+//                    // To turn off the BLE auto reconnection, set the favorites to
+//                    // an empty string
+//                    if fav.isEmpty {
                         device.setFavoriteDevices("*", withCompletionHandler: { (result) in
                             print("setting new favorites returned \(result.rawValue)")
                         })
-                    }
-                }
+//                    }
+//                }
             }
         }
+        
+        delegate?.notifyDeviceManagerPresence()
     }
 
     func didNotifyRemovalForDeviceManager(_ device: CaptureHelperDeviceManager, withResult result: SKTResult) {
         print("didNotifyRemovalForDevice in the detail view")
-        var newScanners : [String] = []
-        for scanner in scanners{
-            if(scanner as String != device.deviceInfo.name){
+        var newScanners: [String] = []
+        for scanner in scanners {
+            if scanner as String != device.deviceInfo.name {
                 newScanners.append(scanner as String)
             }
         }
-        // if the scanner that is removed is SocketCam then
-        // we nil its reference
-        if socketCam != nil {
-            if socketCam == device {
-//                socketCam = nil
-            }
+        // if the scanner that is removed is SocketCam then we nil its reference
+        if socketCam != nil && socketCam == device {
+             socketCam = nil
         }
         scanners = newScanners
-        displayScanners()
+
+        delegate?.notifyDeviceManagerPresence()
     }
 
 }

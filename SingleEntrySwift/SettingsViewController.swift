@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
                 } else {
                     self.socketCamSwitch.isOn = false
                     if status == .notSupported {
-                        capture.setSocketCamStatus(.supported, withCompletionHandler: { (result) in
+                        capture.setSocketCamStatus(.disable, withCompletionHandler: { (result) in
                           print("setting SocketCam to supported returned \(result.rawValue)")
                         })
                     }
@@ -80,6 +80,12 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 

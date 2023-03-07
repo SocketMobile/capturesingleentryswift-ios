@@ -10,7 +10,7 @@ import CaptureSDK
 import Foundation
 import SwiftUI
 
-@available(iOS 14.0, *)
+
 struct ContentView: View {
 
     @ObservedObject var socketCamBind: SocketCamBind
