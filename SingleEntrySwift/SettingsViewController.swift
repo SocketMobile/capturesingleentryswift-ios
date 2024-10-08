@@ -10,12 +10,14 @@ import UIKit
 import CaptureSDK
 
 class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceManagerPresenceDelegate{
-    var detailItem: AnyObject?
     var deviceManager: CaptureHelperDeviceManager?
+    var symbologies: [SKTCaptureDataSource] = []
 
-    @IBOutlet weak var socketCamSwitch: UISwitch!
-    @IBOutlet weak var captureVersion: UILabel!
-    @IBOutlet weak var nfSupportSwitch: UISwitch!
+    @IBOutlet var socketCamSwitch: UISwitch!
+    @IBOutlet var captureVersion: UILabel!
+    @IBOutlet var setFavoritesSwitch: UISwitch!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var appVersion: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +27,9 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         // retrieve the current status of SocketCam
         let capture = CaptureHelper.sharedInstance
 
-        capture.getSocketCamStatusWithCompletionHandler( {(result, socketCamStatus) in
-            print("getSocketCamStatusWithCompletionHandler received!")
-            print("Result:", result.rawValue)
-            if result == SKTCaptureErrors.E_NOERROR {
-                let status = socketCamStatus
-                print("receive SocketCam status:",status ?? .disable)
-                if status == .enable {
-                    self.socketCamSwitch.isOn = true
-                } else {
-                    self.socketCamSwitch.isOn = false
-                    if status == .notSupported {
-                        capture.setSocketCamStatus(.supported, withCompletionHandler: { (result) in
-                          print("setting SocketCam to supported returned \(result.rawValue)")
-                        })
-                    }
-                }
-            }
-        })
-        
         // ask for the Capture version
         CaptureHelper.sharedInstance.getVersionWithCompletionHandler({ (result, version) in
-            print("getCaptureVersion completion received!")
-            print("Result:", result.rawValue)
+            print("getCaptureVersion completion received! - Result:", result.rawValue)
             if result == SKTCaptureErrors.E_NOERROR {
                 let major = String(format:"%d",(version?.major)!)
                 let middle = String(format:"%d",(version?.middle)!)
@@ -64,70 +46,82 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
                 print("getting the Device Manager favorites returns \(result.rawValue)")
                 if result == SKTCaptureErrors.E_NOERROR {
                     if let fav = favorites {
-                        self.nfSupportSwitch.isOn = !fav.isEmpty
+                        self.setFavoritesSwitch.isOn = !fav.isEmpty
                     }
                 }
             })
         }
-    }
+ 
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            appVersion.text = "App Version: \(version).\(build)"
+        }
+     }
 
     override func viewDidAppear(_ animated: Bool) {
         CaptureHelper.sharedInstance.pushDelegate(self)
+        let devices = CaptureHelper.sharedInstance.getDevices()
+        for device in devices {
+            if device.deviceInfo.deviceType == .socketCamC820 || device.deviceInfo.deviceType == .socketCamC860 {
+                // Get symbologies for SocketCam
+                for i in 0...SKTCaptureDataSourceID.lastSymbologyID.rawValue {
+                    device.getDataSourceInfoFromId(SKTCaptureDataSourceID(rawValue: i) ?? SKTCaptureDataSourceID.notSpecified) { [weak self] result, dataSourceInfo in
+                        guard let self = self else { return }
+                        print("----> Data source ID: \(String(describing: dataSourceInfo?.id)) - Name: \(String(describing: dataSourceInfo?.name)) - Enabled: \(String(describing: dataSourceInfo?.status.rawValue))")
+
+                        if let dataSource = dataSourceInfo, dataSource.status != .notSupported {
+                            self.symbologies.append(dataSource)
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                            }
+                        }
+                    }
+                }
+                break
+            } else {
+                // Get symbologies for other devices
+                for i in 0...SKTCaptureDataSourceID.lastSymbologyID.rawValue {
+                    device.getDataSourceInfoFromId(SKTCaptureDataSourceID(rawValue: i) ?? SKTCaptureDataSourceID.notSpecified) { [weak self] result, dataSourceInfo in
+                        guard let self = self else { return }
+                        print("----> Data source ID: \(dataSourceInfo?.id.rawValue ?? 0) - Name: \(dataSourceInfo?.name ?? "")) - Enabled: \(dataSourceInfo?.status.rawValue ?? 0)")
+
+                        if let dataSource = dataSourceInfo, dataSource.status != .notSupported {
+                            self.symbologies.append(dataSource)
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         CaptureHelper.sharedInstance.popDelegate(self)
     }
 
-    @IBAction func changeSocketCam(_ sender: AnyObject) {
-        if(!socketCamSwitch.isOn){
-            print("disabling SocketCam...")
-            CaptureHelper.sharedInstance.setSocketCamStatus(.disable, withCompletionHandler: { (result) in
-              print("disabling SocketCam returned \(result.rawValue)")
-            })
-        }
-        else{
-            print("enabling SocketCam...")
-            CaptureHelper.sharedInstance.setSocketCamStatus(.enable, withCompletionHandler: { (result) in
-                print("enabling SocketCam returned \(result.rawValue)")
-            })
-        }
-    }
-    
     @IBAction func changeNFCSupport(_ sender: UISwitch) {
         let deviceManagers = CaptureHelper.sharedInstance.getDeviceManagers()
         for d in deviceManagers {
             deviceManager = d
         }
         if let dm = deviceManager {
-            if !nfSupportSwitch.isOn {
+            if setFavoritesSwitch.isOn {
+                // In order to connect to 1 Bluetooth Low Energy device you need to put 1`*`. For 2 devices: "*,*". 3 devices: "*,*,*", etc...
+                dm.setFavoriteDevices("*", withCompletionHandler: { (result) in
+                    print("turning ON connection to Bluetooth Low Energy devices returns \(result.rawValue)")
+                })
+            } else {
                 print("turn off the NFC support...")
                 dm.setFavoriteDevices("", withCompletionHandler: { (result) in
-                    print("turning off NFC support returns \(result.rawValue)")
+                    print("turning OFF connection to Bluetooth Low Energy devices returns \(result.rawValue)")
                 })
             }
-            else {
-                print("turn on the NFC support...")
-                dm.setFavoriteDevices("*", withCompletionHandler: { (result) in
-                    print("turning off NFC support returns \(result.rawValue)")
-                })
-            }
-        }
-        else {
-            nfSupportSwitch.isEnabled = false
+        } else {
+            setFavoritesSwitch.isEnabled = false
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     // MARK: - CaptureHelper Delegates
     /**
@@ -152,7 +146,7 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         deviceManager = device
         deviceManager?.getFavoriteDevicesWithCompletionHandler({ (result, favorites) in
             if result == SKTCaptureErrors.E_NOERROR {
-                self.nfSupportSwitch.isOn = !favorites!.isEmpty
+                self.setFavoritesSwitch.isOn = !favorites!.isEmpty
             }
         })
     }
@@ -161,4 +155,64 @@ class SettingsViewController: UIViewController, CaptureHelperDevicePresenceDeleg
         print("Settings: Device Manager Removal")
         deviceManager = nil
     }
+}
+
+extension SettingsViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        symbologies.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "tt", for: indexPath)
+
+        cell.accessoryType = symbologies[indexPath.row].status == .enable ? .checkmark : .none
+        cell.textLabel?.text = symbologies[indexPath.row].name
+        cell.selectionStyle = .none
+
+        return cell
+    }
+
+}
+
+extension SettingsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let _: UITableViewCell = tableView.cellForRow(at: indexPath) {
+
+            let dataSource: SKTCaptureDataSource = symbologies[indexPath.row]
+
+            if dataSource.status == .enable {
+                dataSource.status = .disable
+            } else if dataSource.status == .disable {
+                dataSource.status = .enable
+            }
+
+            let devices = CaptureHelper.sharedInstance.getDevices()
+            for device in devices {
+                if device.deviceInfo.deviceType == .socketCamC820 || device.deviceInfo.deviceType == .socketCamC860 {
+                    device.setDataSourceInfo(dataSource) { [weak self] result in
+                        if result == .E_NOERROR {
+                            guard let self = self else { return }
+
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                            }
+                        }
+                    }
+                } else {
+                    device.setDataSourceInfo(dataSource) { [weak self] result in
+                        if result == .E_NOERROR {
+                            guard let self = self else { return }
+
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

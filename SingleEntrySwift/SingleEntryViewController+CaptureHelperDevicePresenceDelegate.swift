@@ -8,38 +8,31 @@
 
 import CaptureSDK
 
+
 extension SingleEntryViewController: CaptureHelperDevicePresenceDelegate {
 
     // since we use CaptureHelper in shared mode, we receive a device Arrival
     // each time this view becomes active and there is a scanner connected
     func didNotifyArrivalForDevice(_ device: CaptureHelperDevice, withResult result:SKTResult) {
-        print("didNotifyArrivalForDevice in the detail view")
-        let name = device.deviceInfo.name
-        if(name?.caseInsensitiveCompare("socketCam") == ComparisonResult.orderedSame){
-            socketCamTrigger?.isHidden = false;
-            socketCamContinuousScan?.isHidden = false;
-            socketCam = device
-            
-            // set the Overlay View context to give a reference to this controller
-            if let scanner = socketCam {
-                let context : [String:Any] = [SKTCaptureSocketCamContext : self]
-                
-                scanner.setSocketCamOverlayViewParameter(context, withCompletionHandler: { (result) in
-                    self.displayAlertForResult(result, forOperation: "SetOverlayView")
-                })
-            }
-        }
-        else {
+        print("--DEBUG-- didNotifyArrivalForDevice: \(device.deviceInfo.name ?? "") - Type: \(device.deviceInfo.deviceType) in the detail view")
+        if device.deviceInfo.deviceType == .socketCamC820 {
+            socketCamTriggerC820?.isHidden = false
+            socketCamTriggerC820Custom?.isHidden = false
+            socketCamC820 = device
+        } else if device.deviceInfo.deviceType == .socketCamC860 {
+            socketCamTriggerC860?.isHidden = false
+            socketCamTriggerC860Custom?.isHidden = false
+            socketCamC860 = device
+        } else {
             lastDeviceConnected = device
-            socketCamTrigger?.isHidden = false;
-            socketCamContinuousScan?.isHidden = false;
         }
+
         scanners.append(device.deviceInfo.name!)
         displayScanners()
     }
 
     func didNotifyRemovalForDevice(_ device: CaptureHelperDevice, withResult result: SKTResult) {
-        print("didNotifyRemovalForDevice in the detail view")
+        print("--DEBUG-- didNotifyRemovalForDevice: \(device.deviceInfo.name ?? "") in the detail view")
         var newScanners : [String] = []
         for scanner in scanners{
             if(scanner as String != device.deviceInfo.name){
@@ -48,9 +41,18 @@ extension SingleEntryViewController: CaptureHelperDevicePresenceDelegate {
         }
         // if the scanner that is removed is SocketCam then
         // we nil its reference
-        if socketCam != nil {
-            if socketCam == device {
-                socketCam = nil
+        if socketCamC820 != nil {
+            if socketCamC820 == device {
+                socketCamC820 = nil
+                socketCamTriggerC820?.isHidden = true;
+                socketCamTriggerC820Custom?.isHidden = true;
+            }
+        }
+        if socketCamC860 != nil {
+            if socketCamC860 == device {
+                socketCamC860 = nil
+                socketCamTriggerC860?.isHidden = true;
+                socketCamTriggerC860Custom?.isHidden = true;
             }
         }
         scanners = newScanners

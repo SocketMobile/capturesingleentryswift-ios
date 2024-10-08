@@ -16,8 +16,11 @@ extension SingleEntryViewController: CaptureHelperDevicePowerDelegate {
     }
     
     func didChangeBatteryLevel(_ batteryLevel: Int, forDevice device: CaptureHelperDevice) {
-        print("Receive a didChangeBatteryLevel \(batteryLevel)")
-        statusLabel?.text = "Status: Battery: \(batteryLevel)"
+        let arrayOfBytes = withUnsafeBytes(of: batteryLevel.littleEndian, Array.init)
+        print("Receive a didChangeBatteryLevel \(String(describing: batteryLevel)) => Current value: \(arrayOfBytes[1])%")
+        let batteryLevel = "Status: Battery: \(arrayOfBytes[1])%"
+
+        statusLabel?.text = batteryLevel
     }
     
 }

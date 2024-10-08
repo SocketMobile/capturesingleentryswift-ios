@@ -18,6 +18,7 @@ extension SingleEntryViewController: CaptureHelperDeviceDecodedDataDelegate {
     // cancel button in the SocketCam View Finder
     func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice device: CaptureHelperDevice, withResult result:SKTResult) {
         print("didReceiveDecodedData in the detail view with result: \(result.rawValue)")
+        print("->>> didReceiveDecodedData for device: \(device.deviceInfo.deviceType)")
         if result == .E_NOERROR {
             if let rawData = decodedData!.decodedData {
                 let rawDataSize = rawData.count
@@ -27,8 +28,13 @@ extension SingleEntryViewController: CaptureHelperDeviceDecodedDataDelegate {
                 print("Decoded Data \(String(describing: str))")
                 DispatchQueue.main.async {
                     self.decodedData?.text = str
+                    self.socketCamViewController?.dismiss(animated: true, completion: {
+                        self.socketCamViewController = nil
+                    })
+                    self.socketCamViewController?.view.removeFromSuperview()
+                    self.customView?.isHidden = true
                 }
-                // this code can be removed if the application is not interested by
+                // this code can be removed if the application is not interested by              
                 // the host Acknowledgment for the decoded data
                 #if HOST_ACKNOWLEDGMENT
                     device.setDataConfirmationWithLed(SKTCaptureDataConfirmationLed.green, withBeep:SKTCaptureDataConfirmationBeep.good, withRumble: SKTCaptureDataConfirmationRumble.good, withCompletionHandler: {(result) in
@@ -37,6 +43,12 @@ extension SingleEntryViewController: CaptureHelperDeviceDecodedDataDelegate {
                         }
                     })
                 #endif
+            }
+        } else if result == .E_CANCEL {
+            DispatchQueue.main.async {
+                self.socketCamViewController?.view.removeFromSuperview()
+                self.socketCamViewController = nil
+                self.customView?.isHidden = true
             }
         }
     }

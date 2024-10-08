@@ -15,17 +15,29 @@ class SingleEntryViewController: UIViewController {
     @IBOutlet var connectionStatus: UILabel?
     @IBOutlet var statusLabel: UILabel?
     @IBOutlet var decodedData: UITextField?
-    @IBOutlet var socketCamTrigger: UIButton?
-    @IBOutlet var socketCamContinuousScan: UIButton?
+    @IBOutlet var socketCamTriggerC820: UIButton?
+    @IBOutlet var socketCamTriggerC860: UIButton?
+    @IBOutlet var socketCamTriggerC820Custom: UIButton?
+    @IBOutlet var socketCamTriggerC860Custom: UIButton?
+    @IBOutlet var customView: UIView?
 
     let noScannerConnected = "No scanner connected"
     var scanners : [String] = []  // keep a list of scanners to display in the status
-    var socketCam : CaptureHelperDevice?  // keep a reference on the SocketCam Scanner
+    var socketCamC820 : CaptureHelperDevice?  // keep a reference on the SocketCam Scanner
+    var socketCamC860 : CaptureHelperDevice?  // keep a reference on the SocketCam Scanner
     var lastDeviceConnected : CaptureHelperDevice?
     var detailItem: AnyObject?
-    var showSocketCamOverlay = false
     var objects = NSMutableArray()
+    var timer: Timer?
 
+    // Reference on the SocketCam View Controller returned by SetTrigger property on a SocketCan device (C820 or C860) in order to dismiss later on after getting decoded data
+    // It can be displayed: , as a popover or as a subview in your app flow.
+    // Full screen: https://docs.socketmobile.com/capture/ios/en/latest/socketCam.html#sample-code-for-socketcam-presented-in-full-screen
+    // As a subview: https://docs.socketmobile.com/capture/ios/en/latest/socketCam.html#sample-code-for-socketcam-presented-as-a-subview
+    // As a popover: https://docs.socketmobile.com/capture/ios/en/latest/socketCam.html#sample-code-for-socketcam-presented-as-a-popover
+    
+    var socketCamViewController: UIViewController?
+    
     // Capture Helper shareInstance allows to share
     // the same instance of Capture Helper with the
     // entire application. That static property can
@@ -39,23 +51,58 @@ class SingleEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        socketCamTriggerC820?.isHidden = true
+        socketCamTriggerC860?.isHidden = true
+        socketCamTriggerC820Custom?.isHidden = true
+        socketCamTriggerC860Custom?.isHidden = true
+        if #available(iOS 13, *) {
+            decodedData?.overrideUserInterfaceStyle = .light
+        }
 
+        customView?.isHidden = true
+        customView?.translatesAutoresizingMaskIntoConstraints = false
+
+        openCapture()
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panPiece(_:)))
+        customView?.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // since we use CaptureHelper in shared mode, we push this
+        // view controller delegate to the CaptureHelper delegates stack
+        CaptureHelper.sharedInstance.pushDelegate(self)
+        displayScanners()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // remove all the scanner names from the list
+        // because in CaptureHelper shared mode we will receive again
+        // the deviceArrival for each connected scanner once this view
+        // becomes active again
+        scanners = []
+        socketCamTriggerC820?.isHidden = true
+        socketCamTriggerC820Custom?.isHidden = true
+        socketCamTriggerC860?.isHidden = true
+        socketCamTriggerC860Custom?.isHidden = true
+        CaptureHelper.sharedInstance.popDelegate(self)
+    }
+
+    func openCapture() {
         // fill out the App Info with the Bundle ID which should start by the
         // platform on which the application is running and followed with the
         // case sensitive application Bundle ID,
         // with the Socket Mobile Portal developer ID
         // and with the Application Key generated from the Socket Mobile Developer
-        // portal
+        // portal https://www.socketmobile.com/developers/portal
         let AppInfo = SKTAppInfo()
-        AppInfo.appKey = "MC0CFQD1tdTpaABkppmG+iP3dB9kolYVtwIUY8c3UmEfaPoTI3AxbPOTpNgw+fo="
+        AppInfo.appKey = "Your APP KEY here"
         AppInfo.appID = "ios:com.socketmobile.SingleEntrySwift"
-        AppInfo.developerID = "bb57d8e1-f911-47ba-b510-693be162686a"
-        
-        socketCamTrigger?.isHidden = true
-        socketCamContinuousScan?.isHidden = true
-        if #available(iOS 13, *) {
-            decodedData?.overrideUserInterfaceStyle = .light
-        }
+        AppInfo.developerID = "Your Developer ID here"
 
         // there is a stack of delegates the last push is the
         // delegate active, when a new view requiring notifications from the
@@ -86,71 +133,124 @@ class SingleEntryViewController: UIViewController {
                 })
             #endif
         })
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // if we are showing the SocketCam Overlay view we don't
-        // want to push our delegate again when our view becomes active
-        if showSocketCamOverlay == false {
-            // since we use CaptureHelper in shared mode, we push this
-            // view controller delegate to the CaptureHelper delegates stack
-            CaptureHelper.sharedInstance.pushDelegate(self)
-        }
-        showSocketCamOverlay = false
-        displayScanners()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // if we are showing the SocketCam Overlay view we don't
-        // want to remove our delegate from the CaptureHelper delegates stack
-        if showSocketCamOverlay == false {
-            // remove all the scanner names from the list
-            // because in CaptureHelper shared mode we will receive again
-            // the deviceArrival for each connected scanner once this view
-            // becomes active again
-            scanners = []
-            socketCamTrigger?.isHidden = true
-            socketCamContinuousScan?.isHidden = true
-            CaptureHelper.sharedInstance.popDelegate(self)
-        }
     }
 
-    @IBAction func socketCamAction(_ sender: AnyObject) {
-        if let scanner = socketCam as CaptureHelperDevice? {
-            showSocketCamOverlay = true
-            scanner.setTrigger(.start, withCompletionHandler: {(result) in
+    @IBAction func socketCamC820Action(_ sender: AnyObject) {
+        decodedData?.resignFirstResponder()
+        decodedData?.text = ""
+        if let scanner = socketCamC820 as CaptureHelperDevice? {
+            scanner.setTrigger(.start) { result, propertyObject in
                 self.displayAlertForResult(result, forOperation: "SetTrigger")
-                if result != .E_NOERROR {
-                    self.showSocketCamOverlay = false
+                DispatchQueue.main.async {
+                    if let anObject = propertyObject?.object, let dic = anObject as? [String: Any], let objectType = dic["SKTObjectType"] as? String, objectType == "SKTSocketCamViewControllerType", let vc = dic["SKTSocketCamViewController"] as? UIViewController {
+                        vc.modalPresentationStyle = .overCurrentContext
+                        self.present(vc, animated: true)
+                        self.socketCamViewController = vc
+                    }
+                }
+            }
+        }
+    }
+
+    @IBAction func socketCamC820CustomAction(_ sender: AnyObject) {
+        decodedData?.resignFirstResponder()
+        decodedData?.text = ""
+        if let scanner = socketCamC820 as CaptureHelperDevice? {
+            scanner.setTrigger(.start) { result, propertyObject in
+                self.displayAlertForResult(result, forOperation: "SetTrigger")
+                DispatchQueue.main.async {
+                    if let anObject = propertyObject?.object, let dic = anObject as? [String: Any], let objectType = dic["SKTObjectType"] as? String, objectType == "SKTSocketCamViewControllerType", let vc = dic["SKTSocketCamViewController"] as? UIViewController {
+                        if UIDevice.current.userInterfaceIdiom == .pad {
+                            self.customView?.isHidden = false
+                            vc.view.frame = self.customView?.bounds ?? CGRect.zero
+//                            vc.view.frame = CGRect(x: 0, y: 0, width: self.customView?.frame.width, height: self.customView?.frame.height)
+                            self.customView?.addSubview(vc.view)
+                        } else {
+                            vc.modalPresentationStyle = .popover
+                            let popOverVC = vc.popoverPresentationController
+                            popOverVC?.delegate = self
+                            popOverVC?.sourceView = self.decodedData
+                            vc.preferredContentSize = CGSize(width: 250, height: 250)
+                            self.present(vc, animated: true)
+                        }
+                        self.socketCamViewController = vc
+                    }
+                }
+            }
+        }
+    }
+
+    @IBAction func socketCamC860Action(_ sender: AnyObject) {
+        decodedData?.resignFirstResponder()
+        decodedData?.text = ""
+
+        if let scanner = socketCamC860 as CaptureHelperDevice? {
+            scanner.setTrigger(.start, withCompletionHandler: { result, propertyObject in
+                self.displayAlertForResult(result, forOperation: "SetTrigger")
+                DispatchQueue.main.async {
+                    if let anObject = propertyObject?.object, let dic = anObject as? [String: Any], let objectType = dic["SKTObjectType"] as? String, objectType == "SKTSocketCamViewControllerType", let vc = dic["SKTSocketCamViewController"] as? UIViewController {
+                        vc.modalPresentationStyle = .overCurrentContext
+                        self.present(vc, animated: true)
+                        self.socketCamViewController = vc
+                    }
                 }
             })
         }
         else if let device = lastDeviceConnected {
-            device.setTrigger(.start, withCompletionHandler: { (result) in
+            device.setTrigger(.start, withCompletionHandler: { result, propertyResult in
                 print("triggering the device returns: \(result.rawValue)")
             })
         }
     }
 
-    @IBAction func socketCamContinousScanAction(_ sender: AnyObject) {
-        if let scanner = socketCam as CaptureHelperDevice? {
-            showSocketCamOverlay = true
-            scanner.setTrigger(.continuousScan, withCompletionHandler: {(result) in
+    @IBAction func socketCamC860CustomAction(_ sender: AnyObject) {
+        decodedData?.resignFirstResponder()
+        decodedData?.text = ""
+
+        if let scanner = socketCamC860 as CaptureHelperDevice? {
+            scanner.setTrigger(.start, withCompletionHandler: { result, propertyObject in
                 self.displayAlertForResult(result, forOperation: "SetTrigger")
-                if result != .E_NOERROR {
-                    self.showSocketCamOverlay = false
+                DispatchQueue.main.async {
+                    if let anObject = propertyObject?.object, let dic = anObject as? [String: Any], let objectType = dic["SKTObjectType"] as? String, objectType == "SKTSocketCamViewControllerType", let vc = dic["SKTSocketCamViewController"] as? UIViewController {
+                        if UIDevice.current.userInterfaceIdiom == .pad {
+                            self.customView?.isHidden = false
+                            vc.view.frame = self.customView?.bounds ?? CGRect.zero
+                            self.customView?.addSubview(vc.view)
+                        } else {
+                            vc.modalPresentationStyle = .popover
+                            let popOverVC = vc.popoverPresentationController
+                            popOverVC?.delegate = self
+                            popOverVC?.sourceView = self.decodedData
+                            vc.preferredContentSize = CGSize(width: 250, height: 250)
+                            self.present(vc, animated: true)
+                        }
+                        self.socketCamViewController = vc
+                    }
                 }
             })
         }
         else if let device = lastDeviceConnected {
-            device.setTrigger(.continuousScan, withCompletionHandler: { (result) in
+            device.setTrigger(.start, withCompletionHandler: { result, propertyResult in
                 print("triggering the device returns: \(result.rawValue)")
             })
+        }
+    }
+
+    private var initialCenter: CGPoint = .zero
+
+    @objc
+    @IBAction func panPiece(_ sender : UIPanGestureRecognizer) {
+       guard sender.view != nil else {return}
+       
+        switch sender.state {
+        case .began:
+            initialCenter = customView?.center ?? CGPointZero
+        case .changed:
+            let translation = sender.translation(in: view)
+            customView?.center = CGPoint(x: initialCenter.x + translation.x,
+                                          y: initialCenter.y + translation.y)
+        default:
+            break
         }
     }
 
@@ -161,7 +261,7 @@ class SingleEntryViewController: UIViewController {
             // the main dispatch queue is required to update the UI
             // or the delegateDispatchQueue CaptureHelper property
             // can be set instead
-//            DispatchQueue.main.async() {
+            DispatchQueue.main.async() {
                 status.text = ""
                 for scanner in self.scanners {
                     status.text = status.text! + (scanner as String) + "\n"
@@ -169,7 +269,7 @@ class SingleEntryViewController: UIViewController {
                 if(self.scanners.count == 0){
                     status.text = self.noScannerConnected
                 }
-//            }
+            }
         }
     }
 
@@ -194,4 +294,12 @@ class SingleEntryViewController: UIViewController {
         }
     }
 
+}
+
+extension SingleEntryViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
 }
