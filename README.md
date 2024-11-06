@@ -1,16 +1,6 @@
 # SingleEntrySwift for iOS
 
-Simple iOS app showing the use of with `CaptureSDK` as a Swift Package Manager.
-
-## IMPORTANT
-
-As of today, the url of `CaptureSDK` Swift Package Manager contains an Access Token that we cannot display publicly here.
-
-**Please go to our [Developers Portal](https://www.socketmobile.com/developers/portal) to get the url with this Access Token.**
-
-Then add our `CaptureSDK` as Swift Package in Xcode in the project settings in the tab `Package Dependencies`:
-
-![Add CaptureSDK url as shown](swift-package-manager.png)
+Simple iOS app showing the use of our `iOS CaptureSDK` as a Swift Package Manager.
 
 ## Prerequisites
 
