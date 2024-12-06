@@ -1,0 +1,75 @@
+name: Bug Report
+description: Report a problem with the application or code.
+title: '[Bug]: '
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Please provide all the requested information below to help us diagnose and fix the issue.**
+
+  - type: textarea
+    id: developerId
+    attributes:
+      label: Your Socket Mobile Developer ID
+      description: Provide your Developer ID so we can identify your account.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Provide details about your environment (OS, device, CaptureSDK version, etc...).
+      placeholder: |
+        OS version: 
+        Device:
+        CaptureSDK version:
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem.
+      placeholder: "Describe the issue here."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps to reproduce the issue.
+      placeholder: |
+        1. Step one
+        2. Step two
+        3. Step three
+    validations:
+      required: true
+
+  - type: input
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: Describe what you expected to happen.
+      placeholder: "Expected result here."
+    validations:
+      required: true
+
+  - type: input
+    id: actual_behavior
+    attributes:
+      label: Actual Behavior
+      description: Describe what actually happened.
+      placeholder: "What happened instead of the expected result?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Include any other context, logs, or screenshots that might help.
+      placeholder: "Add extra details here (optional)."
