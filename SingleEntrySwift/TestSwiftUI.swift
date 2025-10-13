@@ -12,7 +12,7 @@ import SwiftUI
 import Combine
 
 
-@available(iOS 13, *)
+@available(iOS 15, *)
 struct SocketReaderBar: View, CaptureHelperDevicePresenceDelegate {
     
     func didNotifyArrivalForDevice(_ device: CaptureHelperDevice, withResult result: SKTResult) {
@@ -37,5 +37,5 @@ struct SocketReaderBar: View, CaptureHelperDevicePresenceDelegate {
         .padding(.horizontal)
         
     }
+    
 }
-
