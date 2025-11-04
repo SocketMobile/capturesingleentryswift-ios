@@ -17,7 +17,6 @@ class DevicesViewController: UIViewController {
     
     var devices: [CaptureHelperDevice] = []
     var discoveredDevices: [SKTCaptureDiscoveredDeviceInfo] = []
-    var bleDeviceManager: CaptureHelperDeviceManager?
 
     
     override func viewDidLoad() {
@@ -27,7 +26,6 @@ class DevicesViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(didNotifyArrivalForDevice), name: NSNotification.Name("didNotifyArrivalForDevice"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didNotifyRemovalForDevice), name: NSNotification.Name("didNotifyRemovalForDevice"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didNotifyArrivalForDeviceManager), name: NSNotification.Name("didNotifyArrivalForDeviceManager"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverDevice), name: NSNotification.Name("didDiscoverDevice"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEndDiscoveryWithResult), name: NSNotification.Name("didEndDiscoveryWithResult"), object: nil)
     }
@@ -56,13 +54,6 @@ class DevicesViewController: UIViewController {
                 }
             }
             self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-    
-    @objc
-    func didNotifyArrivalForDeviceManager(notification: NSNotification) {
-        if let device: CaptureHelperDeviceManager = notification.object as? CaptureHelperDeviceManager {
-            bleDeviceManager = device
         }
     }
 
@@ -150,7 +141,6 @@ extension DevicesViewController: UITableViewDataSource {
                 if devices.count > 0 {
                     let device = devices[indexPath.row]
                     cell.device = device
-                    cell.bleDeviceManager = bleDeviceManager
                     cell.nameLabel.text = device.deviceInfo.name
                     cell.actionButton.isHidden = device.deviceInfo.deviceType == .socketCamC820 || device.deviceInfo.deviceType == .socketCamC860
                     cell.completion = {
@@ -169,7 +159,6 @@ extension DevicesViewController: UITableViewDataSource {
                 if discoveredDevices.count > 0 {
                     let device = discoveredDevices[indexPath.row]
                     cell.device = device
-                    cell.bleDeviceManager = bleDeviceManager
                     cell.nameLabel.text = device.name
                     cell.completion = {
                         if let index = self.discoveredDevices.firstIndex(of: device) {
@@ -213,7 +202,6 @@ class ConnectedDeviceCell: UITableViewCell {
     @IBOutlet var actionButton: UIButton!
     
     var device: CaptureHelperDevice?
-    var bleDeviceManager: CaptureHelperDeviceManager?
     var completion: (() -> Void)?
     
     @IBAction func disconnectAction() {
@@ -236,13 +224,12 @@ class DiscoveredDeviceCell: UITableViewCell {
     @IBOutlet var actionButton: UIButton!
     
     var device: SKTCaptureDiscoveredDeviceInfo?
-    var bleDeviceManager: CaptureHelperDeviceManager?
     var completion: (() -> Void)?
     
     @IBAction func connectAction() {
-        if let device = self.device, let bleDeviceManager = bleDeviceManager {
+        if let device = self.device {
             // Connecting a Bluetooth LE device happens with the Bluetooth LE device manager. Bluetooth Classic devices are connected at the iOS Settings level once discovered and selected through the iOs native picker
-            bleDeviceManager.connectToDiscoveredDevice(device) { result in
+            CaptureHelper.sharedInstance.connectToDiscoveredDevice(device) { result in
                 print("connectToDiscoveredDevice: \(device.name ?? "") - Result: \(result.rawValue)")
                 if result == .E_NOERROR, let completion = self.completion {
                     completion()

@@ -12,7 +12,7 @@ import CaptureSDK
 // All the CaptureHelperDelegate are grouped in a same class to simplify this sample app
 // Otherwise those delegates can be "pushed" and "popped" for a particular class
 
-class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceManagerPresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDeviceManagerDiscoveryDelegate {
+class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDiscoveryDelegate {
 
     var scanners: [CaptureHelperDevice] = []
 
@@ -31,29 +31,16 @@ class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureH
         NotificationCenter.default.post(name: NSNotification.Name("didNotifyRemovalForDevice"), object: device)
     }
 
-    // MARK: - CaptureHelperDeviceManagerPresenceDelegate
-
-    // Notifies that the Bluetooth LE manager device has been initialized
-    func didNotifyArrivalForDeviceManager(_ device: CaptureHelperDeviceManager, withResult result: SKTResult) {
-        print("didNotifyArrivalForDeviceManager: \(device.deviceInfo.name ?? "") - Result: \(result.rawValue)")
-        NotificationCenter.default.post(name: NSNotification.Name("didNotifyArrivalForDeviceManager"), object: device)
-    }
-
-    // Notifies that the Bluetooth LE manager device has been removed
-    func didNotifyRemovalForDeviceManager(_ device: CaptureHelperDeviceManager, withResult result: SKTResult) {
-        print("didNotifyRemovalForDeviceManager: \(device.deviceInfo.name ?? "") - Result: \(result.rawValue)")
-    }
-
     // MARK: - CaptureHelperDeviceManagerDiscoveryDelegate
 
     // Notifies that the Bluetooth LE manager discovered a Bluetooth LE device. It can be triggered multiple times on the span of a discovery
-    func didDiscoverDevice(_ device: SKTCaptureDiscoveredDeviceInfo, fromDeviceManager deviceManager: CaptureSDK.CaptureHelperDeviceManager) {
+    func didDiscoverDevice(_ device: SKTCaptureDiscoveredDeviceInfo) {
         print("didDiscoverDevice: Name: \(device.name ?? "") - ServiceUUID: \(device.serviceUuid ?? "") - Identifier: \(device.identifierUuid ?? "")")
         NotificationCenter.default.post(name: NSNotification.Name("didDiscoverDevice"), object: device)
     }
     
     // Notifies that the Bluetooth LE manager has finished to discover Bluetooth LE devices
-    func didEndDiscoveryWithResult(_ result: SKTResult, fromDeviceManager deviceManager: CaptureSDK.CaptureHelperDeviceManager) {
+    func didEndDiscoveryWithResult(_ result: SKTResult) {
         print("didEndDiscoveryWithResult: \(result.rawValue)")
         NotificationCenter.default.post(name: NSNotification.Name("didEndDiscoveryWithResult"), object: nil)
     }
@@ -61,7 +48,7 @@ class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureH
     // MARK: - CaptureHelperDeviceDecodedDataDelegate
 
     // Notifies that data have been scanned
-    func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice device: CaptureSDK.CaptureHelperDevice, withResult result: SKTResult) {
+    func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice device: CaptureHelperDevice, withResult result: SKTResult) {
         print("didReceiveDecodedData for device: \(device.deviceInfo.name ?? "") with result: \(result.rawValue)")
         if result == .E_NOERROR {
             if let rawData = decodedData!.decodedData {
