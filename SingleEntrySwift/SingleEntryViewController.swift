@@ -72,6 +72,11 @@ class SingleEntryViewController: UIViewController {
                     print("Data Confirmation Mode returns : \(result.rawValue)")
                 })
             #endif
+            
+            CaptureHelper.sharedInstance.getVersionWithCompletionHandler { result, version in
+                print("getVersionWithCompletionHandler returns : \(result.rawValue)")
+                print("CaptureSDK version returns : \(version?.major ?? 0).\(version?.middle ?? 0).\(version?.minor ?? 0)")
+            }
         })
     }
 

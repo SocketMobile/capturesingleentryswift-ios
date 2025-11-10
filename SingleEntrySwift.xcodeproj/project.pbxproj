@@ -708,7 +708,7 @@
 			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.29;
+				minimumVersion = 2.0.31;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
