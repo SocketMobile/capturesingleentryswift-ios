@@ -13,13 +13,13 @@
 		E60FD6D727DA50FD00908264 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60FD6D527DA50FD00908264 /* AudioToolbox.framework */; };
 		E60FD6D927DA65B900908264 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60FD6D827DA65B900908264 /* UIKit.framework */; };
 		E60FD6DB27DA65CD00908264 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60FD6DA27DA65CD00908264 /* AVKit.framework */; };
-		E6163A7C2CDBF92D00E9B4AD /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E6163A7B2CDBF92D00E9B4AD /* CaptureSDK */; };
 		E619B202281ADED2000A668E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E619B200281ADED2000A668E /* CoreFoundation.framework */; };
 		E619B203281ADED2000A668E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E619B201281ADED2000A668E /* Foundation.framework */; };
 		E62E70722BF39A1E00994140 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62E70712BF39A1E00994140 /* SwiftUI.framework */; };
 		E6305E5227EC7A22008A395C /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6305E5127EC7A22008A395C /* SingleEntryViewController.swift */; };
 		E6587848281FE98000377C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6587846281FE98000377C18 /* Main.storyboard */; };
 		E6587849281FE98000377C18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6587847281FE98000377C18 /* LaunchScreen.xib */; };
+		E65AB1532F39F9D500A74B0E /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E65AB1522F39F9D500A74B0E /* CaptureSDK */; };
 		E6A9B1C729B87C5000B476F7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A9B1C629B87C5000B476F7 /* Security.framework */; };
 		E6D83B182E9961E100AFE2B2 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D83B172E9961E000AFE2B2 /* DevicesViewController.swift */; };
 		E6D83B1A2E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D83B192E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift */; };
@@ -100,7 +100,7 @@
 			files = (
 				E62E70722BF39A1E00994140 /* SwiftUI.framework in Frameworks */,
 				E6A9B1C729B87C5000B476F7 /* Security.framework in Frameworks */,
-				E6163A7C2CDBF92D00E9B4AD /* CaptureSDK in Frameworks */,
+				E65AB1532F39F9D500A74B0E /* CaptureSDK in Frameworks */,
 				E6DAFD5329B8786800D32AF6 /* libc++.tbd in Frameworks */,
 				E619B202281ADED2000A668E /* CoreFoundation.framework in Frameworks */,
 				E619B203281ADED2000A668E /* Foundation.framework in Frameworks */,
@@ -225,7 +225,7 @@
 			);
 			name = SingleEntry;
 			packageProductDependencies = (
-				E6163A7B2CDBF92D00E9B4AD /* CaptureSDK */,
+				E65AB1522F39F9D500A74B0E /* CaptureSDK */,
 			);
 			productName = SingleEntrySwift;
 			productReference = 679FF0391A1A83C900510266 /* SingleEntry.app */;
@@ -283,7 +283,7 @@
 			);
 			mainGroup = 679FF0301A1A83C900510266;
 			packageReferences = (
-				E6163A7A2CDBF92D00E9B4AD /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */,
+				E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */,
 			);
 			productRefGroup = 679FF03A1A1A83C900510266 /* Products */;
 			projectDirPath = "";
@@ -703,20 +703,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E6163A7A2CDBF92D00E9B4AD /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */ = {
+		E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk.git";
+			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.31;
+				minimumVersion = 2.0.63;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E6163A7B2CDBF92D00E9B4AD /* CaptureSDK */ = {
+		E65AB1522F39F9D500A74B0E /* CaptureSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E6163A7A2CDBF92D00E9B4AD /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */;
+			package = E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */;
 			productName = CaptureSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

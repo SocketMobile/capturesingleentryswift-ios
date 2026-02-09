@@ -14,7 +14,7 @@ import CaptureSDK
 class DevicesViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView?
-    
+
     var devices: [CaptureHelperDevice] = []
     var discoveredDevices: [SKTCaptureDiscoveredDeviceInfo] = []
 
@@ -37,10 +37,10 @@ class DevicesViewController: UIViewController {
                 return device.deviceInfo.guid == deviceToCompare.deviceInfo.guid
             }) {
                 devices.append(device)
-                DispatchQueue.main.async {
-                    self.tableView?.reloadData()
-                }
             }
+        }
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
         }
     }
     
@@ -49,14 +49,14 @@ class DevicesViewController: UIViewController {
         if let device: CaptureHelperDevice = notification.object as? CaptureHelperDevice {
             if let index = devices.firstIndex(of: device) {
                 devices.remove(at: index)
-                DispatchQueue.main.async {
-                    self.tableView?.reloadData()
-                }
             }
             self.navigationController?.popToRootViewController(animated: true)
         }
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
+        }
     }
-
+    
     @objc
     func didDiscoverDevice(_ notification: Notification) {
         if let device = notification.object as? SKTCaptureDiscoveredDeviceInfo {
@@ -64,10 +64,10 @@ class DevicesViewController: UIViewController {
                 return device.identifierUuid == deviceToCompare.identifierUuid
             }) {
                 discoveredDevices.append(device)
-                DispatchQueue.main.async {
-                    self.tableView?.reloadData()
-                }
             }
+        }
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
         }
     }
 
@@ -75,31 +75,24 @@ class DevicesViewController: UIViewController {
     func didEndDiscoveryWithResult(_ notification: Notification) {
         // If there's no discovered Bluetooth LE you can launch a Bluetooth Classic discovery for instance
         // This use the iOS native picker and the device will connect automatically to the CaptureSDK and your app
-        if discoveredDevices.count == 0  {
-            let alert = UIAlertController(title: "No Bluetooth Low Energy Device Found", message: "Launch a Bluetooth Classic Discovery", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-
-                // Then we launch a Bluetooth Classic discovery in this sample app
-                // PLEASE NOTE THAT OUR DEVICES ARE MAINLY BLUETOOTH CLASSIC AND WE'RE TRANSITIONING TO BLUETOOTH LOW ENERGY DEVICES
-                // THINK ABOUT DOING A BLUETOOTH CLASSIC DISCOVERY AS YOUR CUSTOMERS MAY STILL HAVE THOSE DEVICES FOR A WHILE
-                // SO YOU CAN START WITH BLUETOOTH CLASSIC FIRST IF YOU WANT TO
-                CaptureHelper.sharedInstance.addBluetoothDevice(.bluetoothClassic , withCompletionHandler: { result in
-                    print("Add Bluetooth Classic Device result: \(result.rawValue)")
-                })
-
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
     }
 
-    @IBAction func addDeviceAction() {
+    @IBAction func addBleDeviceAction() {
         // First we launch a Bluetooth LE discovery in this sample app
         // PLEASE NOTE THAT OUR DEVICES ARE MAINLY BLUETOOTH CLASSIC AND WE'RE TRANSITIONING TO BLUETOOTH LOW ENERGY DEVICES
         // THINK ABOUT DOING A BLUETOOTH CLASSIC DISCOVERY AS YOUR CUSTOMERS MAY STILL HAVE THOSE DEVICES FOR A WHILE
         // SO YOU CAN START WITH BLUETOOTH CLASSIC FIRST IF YOU WANT TO
         CaptureHelper.sharedInstance.addBluetoothDevice(.bluetoothLowEnergy , withCompletionHandler: { result in
             print("Add Bluetooth Low Energy Device result: \(result.rawValue)")
+        })
+    }
+
+    @IBAction func addBluetoothClassicDeviceAction() {
+        // You can also launch a Bluetooth Classic discovery through the External Accessory framework in this sample app
+        // This use the iOS native picker and the device will connect automatically to the CaptureSDK and your app
+        // PLEASE NOTE THAT OUR DEVICES ARE MAINLY BLUETOOTH CLASSIC AND WE'RE TRANSITIONING TO BLUETOOTH LOW ENERGY DEVICES
+        CaptureHelper.sharedInstance.addBluetoothDevice(.bluetoothClassic , withCompletionHandler: { result in
+            print("Add Bluetooth Classic Device result: \(result.rawValue)")
         })
     }
 

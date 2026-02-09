@@ -24,16 +24,12 @@ class FriendlyNameViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Friendly name feature"
-        self.titleLabel?.text = device?.deviceInfo.name
 
         if let device = device {
-            device.getFriendlyNameWithCompletionHandler({ result, name in
-                print("Get Friendly Name: \(name ?? "") - Result: \(result.rawValue)")
-                
-                DispatchQueue.main.async {
-                    self.friendlyNameTextField.text = name
-                }
-            })
+            DispatchQueue.main.async {
+                self.titleLabel?.text = device.deviceInfo.name
+                self.friendlyNameTextField.text = device.deviceInfo.name
+            }
         }
     }
     

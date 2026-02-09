@@ -22,14 +22,14 @@ class SettingsViewController: UIViewController {
 
         // ask for the Capture version
         CaptureHelper.sharedInstance.getVersionWithCompletionHandler({ (result, version) in
-            print("getCaptureVersion completion received! - Result:", result.rawValue)
+            print("getCaptureSDKVersion completion received! - Result:", result.rawValue)
             if result == SKTCaptureErrors.E_NOERROR {
                 let major = String(format:"%d",(version?.major)!)
                 let middle = String(format:"%d",(version?.middle)!)
                 let minor = String(format:"%d",(version?.minor)!)
                 let build = String(format:"%d",(version?.build)!)
-                print("receive Capture version: \(major).\(middle).\(minor).\(build)")
-                self.captureVersion.text = "Capture Version: \(major).\(middle).\(minor).\(build)"
+                print("receive CaptureSDK version: \(major).\(middle).\(minor).\(build)")
+                self.captureVersion.text = "CaptureSDK Version: \(major).\(middle).\(minor).\(build)"
             }
         })
         

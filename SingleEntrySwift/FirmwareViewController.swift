@@ -29,10 +29,12 @@ class FirmwareViewController: UIViewController {
     @IBAction func firmwareVersionAction() {
         if let device = device {
             device.getFirmwareVersionWithCompletionHandler({ result, version in
-                print("Get Firmware Version: \(version) - Result: \(result.rawValue)")
+                print("Get Firmware Version Result: \(result.rawValue)")
 
-                DispatchQueue.main.async {
-                    self.firmwareLabel?.text = "Firmware Version: \(version?.major ?? 0).\(version?.middle ?? 0).\(version?.minor ?? 0)"
+                if let version = version {
+                    DispatchQueue.main.async {
+                        self.firmwareLabel?.text = "Firmware Version: \(version.major).\(version.middle).\(version.minor)\nFirmware Date: \(version.month).\(version.day).\(version.year)"
+                    }
                 }
             })
         }

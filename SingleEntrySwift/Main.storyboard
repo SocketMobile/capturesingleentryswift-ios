@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2iK-AW-vEs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2iK-AW-vEs">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,13 +71,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKJ-xG-MMg">
-                                <rect key="frame" x="16" y="132" width="343" height="29.5"/>
+                                <rect key="frame" x="16" y="132" width="343" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwd-3H-MFf">
-                                <rect key="frame" x="0.0" y="178" width="375" height="489"/>
+                                <rect key="frame" x="0.0" y="180.5" width="375" height="486.5"/>
                                 <connections>
                                     <segue destination="bdY-h8-PK6" kind="embed" identifier="DevicesSegue" id="k8j-7f-Vpa"/>
                                 </connections>
@@ -160,11 +160,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Aot-PN-4W8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WKq-38-1dD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="489"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="486.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YeZ-Zx-Zym">
-                                <rect key="frame" x="0.0" y="68" width="375" height="421"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="418.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConnectedDeviceCell" id="OMM-tH-fBN" customClass="ConnectedDeviceCell" customModule="SingleEntry" customModuleProvider="target">
@@ -254,31 +254,47 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFa-bY-lqz">
-                                <rect key="frame" x="20" y="0.0" width="335" height="60"/>
+                                <rect key="frame" x="20" y="0.0" width="165.5" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CLh-iB-adL"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add device">
+                                <buttonConfiguration key="configuration" style="plain" title="Add BLE device">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addDeviceAction" destination="4Iq-ta-MBR" eventType="touchUpInside" id="TF0-HL-REx"/>
-                                    <action selector="addDeviceAction" destination="4DN-3Q-b2Y" eventType="touchUpInside" id="oJ8-kR-AKQ"/>
-                                    <action selector="triggerStartAction" destination="k49-ch-xzf" eventType="touchUpInside" id="lL9-eN-i4t"/>
+                                    <action selector="addBleDeviceAction" destination="4DN-3Q-b2Y" eventType="touchUpInside" id="Qak-fY-HFn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFh-iZ-mWf">
+                                <rect key="frame" x="201.5" y="0.0" width="165.5" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FGk-gR-oK9"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add BT Classic device">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addBluetoothClassicDeviceAction" destination="4DN-3Q-b2Y" eventType="touchUpInside" id="cfA-3w-2Ig"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JFh-iZ-mWf" firstAttribute="top" secondItem="WKq-38-1dD" secondAttribute="top" id="5fA-QX-XZH"/>
+                            <constraint firstAttribute="trailing" secondItem="JFh-iZ-mWf" secondAttribute="trailing" constant="8" id="E2R-Jk-28d"/>
                             <constraint firstAttribute="trailing" secondItem="YeZ-Zx-Zym" secondAttribute="trailing" id="EFv-c6-ycv"/>
                             <constraint firstItem="kFa-bY-lqz" firstAttribute="leading" secondItem="WKq-38-1dD" secondAttribute="leading" constant="20" id="HNR-o6-Lse"/>
                             <constraint firstItem="YeZ-Zx-Zym" firstAttribute="leading" secondItem="WKq-38-1dD" secondAttribute="leading" id="KRY-xY-sgn"/>
-                            <constraint firstAttribute="trailing" secondItem="kFa-bY-lqz" secondAttribute="trailing" constant="20" id="ZfR-Qa-VoE"/>
                             <constraint firstItem="Aot-PN-4W8" firstAttribute="top" secondItem="YeZ-Zx-Zym" secondAttribute="bottom" id="bqj-NH-N2v"/>
                             <constraint firstItem="YeZ-Zx-Zym" firstAttribute="top" secondItem="kFa-bY-lqz" secondAttribute="bottom" constant="8" symbolic="YES" id="hOB-HE-KhK"/>
+                            <constraint firstItem="JFh-iZ-mWf" firstAttribute="leading" secondItem="kFa-bY-lqz" secondAttribute="trailing" constant="16" id="v7R-GZ-Gx2"/>
+                            <constraint firstItem="JFh-iZ-mWf" firstAttribute="width" secondItem="kFa-bY-lqz" secondAttribute="width" id="y4e-tX-hTe"/>
                             <constraint firstItem="kFa-bY-lqz" firstAttribute="top" secondItem="WKq-38-1dD" secondAttribute="top" id="zMs-BY-Ttc"/>
                         </constraints>
                     </view>
@@ -725,7 +741,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Get Firmware Version">
+                                <buttonConfiguration key="configuration" style="plain" title="Get Firmware Info">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -744,7 +760,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-58-LLY">
                                 <rect key="frame" x="8" y="84" width="359" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="rit-ch-Pq2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="rit-ch-Pq2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -783,10 +799,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.0" green="0.76470588235294112" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

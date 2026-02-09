@@ -12,11 +12,17 @@ import CaptureSDK
 // All the CaptureHelperDelegate are grouped in a same class to simplify this sample app
 // Otherwise those delegates can be "pushed" and "popped" for a particular class
 
-class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDiscoveryDelegate {
+class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDiscoveryDelegate, CaptureHelperLoggerDelegate {
 
     var scanners: [CaptureHelperDevice] = []
 
     
+    // MARK: - CaptureHelperLoggerDelegate
+
+    func didReceiveLogTrace(_ logTrace: String) {
+        print(logTrace)
+    }
+
     // MARK: - CaptureHelperDevicePresenceDelegate
 
     // Notifies that a device has been connected
@@ -31,7 +37,7 @@ class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureH
         NotificationCenter.default.post(name: NSNotification.Name("didNotifyRemovalForDevice"), object: device)
     }
 
-    // MARK: - CaptureHelperDeviceManagerDiscoveryDelegate
+    // MARK: - CaptureHelperDiscoveryDelegate
 
     // Notifies that the Bluetooth LE manager discovered a Bluetooth LE device. It can be triggered multiple times on the span of a discovery
     func didDiscoverDevice(_ device: SKTCaptureDiscoveredDeviceInfo) {

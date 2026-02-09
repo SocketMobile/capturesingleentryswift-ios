@@ -54,6 +54,10 @@ class SingleEntryViewController: UIViewController {
         // property to the DispatchQueue.main
         captureHelper.dispatchQueue = DispatchQueue.main
 
+        // enable some logs for production
+        // add the CaptureHelperLoggerDelegate protocol AND implement the method didReceiveLogTrace(_ logTrace: String)
+        captureHelper.setLogger(enable: true)
+
         // open Capture Helper ONLY ONCE once in the application
         // also you don't need to close it, it handles its lifecycle by itself
         captureHelper.openWithAppInfo(AppInfo, withCompletionHandler: { (_ result: SKTResult) in
@@ -72,11 +76,6 @@ class SingleEntryViewController: UIViewController {
                     print("Data Confirmation Mode returns : \(result.rawValue)")
                 })
             #endif
-            
-            CaptureHelper.sharedInstance.getVersionWithCompletionHandler { result, version in
-                print("getVersionWithCompletionHandler returns : \(result.rawValue)")
-                print("CaptureSDK version returns : \(version?.major ?? 0).\(version?.middle ?? 0).\(version?.minor ?? 0)")
-            }
         })
     }
 
