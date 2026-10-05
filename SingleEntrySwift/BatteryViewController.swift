@@ -46,9 +46,22 @@ class BatteryViewController: UIViewController {
 
                 let finalPowerState = SKTHelper.getPowerState(fromPower: Int(powerState ?? 0))
                 DispatchQueue.main.async {
-                    self.batteryLabel?.text = "Power state: \(finalPowerState)"
+                    self.batteryLabel?.text = "Power state: \(self.description(ofPowerState: finalPowerState))"
                 }
             })
+        }
+    }
+
+    private func description(ofPowerState powerState: Int) -> String {
+        switch SKTCapturePowerState(rawValue: powerState) {
+        case .onBattery:
+            return "On battery"
+        case .onCradle:
+            return "On cradle"
+        case .onAc:
+            return "On AC"
+        default:
+            return "Unknown"
         }
     }
 

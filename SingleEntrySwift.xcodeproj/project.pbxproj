@@ -19,7 +19,8 @@
 		E6305E5227EC7A22008A395C /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6305E5127EC7A22008A395C /* SingleEntryViewController.swift */; };
 		E6587848281FE98000377C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6587846281FE98000377C18 /* Main.storyboard */; };
 		E6587849281FE98000377C18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6587847281FE98000377C18 /* LaunchScreen.xib */; };
-		E65AB1532F39F9D500A74B0E /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E65AB1522F39F9D500A74B0E /* CaptureSDK */; };
+		E6735B722F7D1B6700E673F1 /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E6735B712F7D1B6700E673F1 /* CaptureSDK */; };
+		E686AD55300FDE58006BDEDB /* SinglePartnershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E686AD54300FDE58006BDEDB /* SinglePartnershipViewController.swift */; };
 		E6A9B1C729B87C5000B476F7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A9B1C629B87C5000B476F7 /* Security.framework */; };
 		E6D83B182E9961E100AFE2B2 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D83B172E9961E000AFE2B2 /* DevicesViewController.swift */; };
 		E6D83B1A2E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D83B192E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift */; };
@@ -78,6 +79,7 @@
 		E6305E5127EC7A22008A395C /* SingleEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntryViewController.swift; sourceTree = "<group>"; };
 		E6587846281FE98000377C18 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6587847281FE98000377C18 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		E686AD54300FDE58006BDEDB /* SinglePartnershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePartnershipViewController.swift; sourceTree = "<group>"; };
 		E6A9B1C629B87C5000B476F7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E6D83B172E9961E000AFE2B2 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		E6D83B192E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSdkHandler.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 			files = (
 				E62E70722BF39A1E00994140 /* SwiftUI.framework in Frameworks */,
 				E6A9B1C729B87C5000B476F7 /* Security.framework in Frameworks */,
-				E65AB1532F39F9D500A74B0E /* CaptureSDK in Frameworks */,
+				E6735B722F7D1B6700E673F1 /* CaptureSDK in Frameworks */,
 				E6DAFD5329B8786800D32AF6 /* libc++.tbd in Frameworks */,
 				E619B202281ADED2000A668E /* CoreFoundation.framework in Frameworks */,
 				E619B203281ADED2000A668E /* Foundation.framework in Frameworks */,
@@ -152,6 +154,7 @@
 				E6F0ACB22E9D864900FF8F0B /* FirmwareViewController.swift */,
 				E6F0ACAC2E9D596E00FF8F0B /* FriendlyNameViewController.swift */,
 				E6F0ACAA2E9D43E900FF8F0B /* TriggerViewController.swift */,
+				E686AD54300FDE58006BDEDB /* SinglePartnershipViewController.swift */,
 				E6F0ACAE2E9D5B8C00FF8F0B /* SymbologiesViewController.swift */,
 				E744CF411BDFDD700090F8C0 /* SettingsViewController.swift */,
 				679FF0471A1A83C900510266 /* Images.xcassets */,
@@ -225,7 +228,7 @@
 			);
 			name = SingleEntry;
 			packageProductDependencies = (
-				E65AB1522F39F9D500A74B0E /* CaptureSDK */,
+				E6735B712F7D1B6700E673F1 /* CaptureSDK */,
 			);
 			productName = SingleEntrySwift;
 			productReference = 679FF0391A1A83C900510266 /* SingleEntry.app */;
@@ -262,7 +265,9 @@
 				TargetAttributes = {
 					679FF0381A1A83C900510266 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = GCJ274LWEE;
 						LastSwiftMigration = 1430;
+						ProvisioningStyle = Manual;
 					};
 					679FF04F1A1A83C900510266 = {
 						CreatedOnToolsVersion = 6.1;
@@ -283,7 +288,7 @@
 			);
 			mainGroup = 679FF0301A1A83C900510266;
 			packageReferences = (
-				E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */,
+				E6735B702F7D1B6700E673F1 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */,
 			);
 			productRefGroup = 679FF03A1A1A83C900510266 /* Products */;
 			projectDirPath = "";
@@ -346,6 +351,7 @@
 				E6F0ACB32E9D864900FF8F0B /* FirmwareViewController.swift in Sources */,
 				E6F0ACAF2E9D5B8C00FF8F0B /* SymbologiesViewController.swift in Sources */,
 				E6D83B1A2E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift in Sources */,
+				E686AD55300FDE58006BDEDB /* SinglePartnershipViewController.swift in Sources */,
 				E6305E5227EC7A22008A395C /* SingleEntryViewController.swift in Sources */,
 				E6E43FE42859FC8000003984 /* TestSwiftUI.swift in Sources */,
 				679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */,
@@ -512,7 +518,7 @@
 				INFOPLIST_FILE = SingleEntrySwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SingleEntry;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,9 +556,11 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -579,7 +587,7 @@
 				INFOPLIST_FILE = SingleEntrySwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SingleEntry;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,8 +624,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -703,20 +713,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */ = {
+		E6735B702F7D1B6700E673F1 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SocketMobile/swift-package-capturesdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.63;
+				minimumVersion = 2.1.22;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E65AB1522F39F9D500A74B0E /* CaptureSDK */ = {
+		E6735B712F7D1B6700E673F1 /* CaptureSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E65AB1512F39F9D500A74B0E /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */;
+			package = E6735B702F7D1B6700E673F1 /* XCRemoteSwiftPackageReference "swift-package-capturesdk" */;
 			productName = CaptureSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

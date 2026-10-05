@@ -12,8 +12,12 @@ import CaptureSDK
 
 class SingleEntryViewController: UIViewController {
 
-    @IBOutlet var decodedData: UITextField?
+    @IBOutlet var decodedData: UITextView?
+    @IBOutlet var decodedDataHeight: NSLayoutConstraint?
     @IBOutlet var containerView: UIView?
+
+    private let decodedDataMinHeight: CGFloat = 32
+    private let decodedDataMaxHeight: CGFloat = 200
 
     // Capture Helper shareInstance allows to share
     // the same instance of Capture Helper with the
@@ -31,7 +35,7 @@ class SingleEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         decodedData?.overrideUserInterfaceStyle = .light
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDecodedData), name: NSNotification.Name("didReceiveDecodedDataSuccess"), object: nil)
 
         // fill out the App Info with the Bundle ID which should start by the
@@ -79,13 +83,56 @@ class SingleEntryViewController: UIViewController {
         })
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // The fitting height depends on the width, which changes on rotation.
+        updateDecodedDataHeight()
+    }
+
+    // Scrolling is only possible once the text exceeds the max height: below it the
+    // text view is sized to fit its content (and alwaysBounceVertical is off).
+    private func updateDecodedDataHeight() {
+        guard let textView = decodedData else { return }
+        let fittingSize = CGSize(width: textView.bounds.width, height: .greatestFiniteMagnitude)
+        let fittingHeight = textView.sizeThatFits(fittingSize).height
+        decodedDataHeight?.constant = min(max(fittingHeight, decodedDataMinHeight), decodedDataMaxHeight)
+    }
+
     @objc
     func didReceiveDecodedData(_ notification: Notification) {
         if let decodedDataString = notification.object as? String {
             DispatchQueue.main.async {
                 self.decodedData?.text = decodedDataString
+                self.updateDecodedDataHeight()
             }
         }
     }
 
+    @IBAction func clearDecodedData() {
+        self.decodedData?.text = ""
+        updateDecodedDataHeight()
+    }
+
+    @IBAction func copyDecodedData() {
+        UIPasteboard.general.string = self.decodedData?.text
+    }
+
+}
+
+extension SingleEntryViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension SingleEntryViewController: UITextViewDelegate {
+    
+    func textviewsShouldReturn(_ textField: UITextView) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }

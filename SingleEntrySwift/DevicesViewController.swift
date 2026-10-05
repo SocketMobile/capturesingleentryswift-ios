@@ -95,6 +95,14 @@ class DevicesViewController: UIViewController {
             print("Add Bluetooth Classic Device result: \(result.rawValue)")
         })
     }
+    
+    @IBAction func setPartnershipAction() {
+        if let setPartnershipViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePartnershipViewController") as? SinglePartnershipViewController {
+            setPartnershipViewController.device = nil
+            self.navigationController?.pushViewController(setPartnershipViewController, animated: true)
+        }
+
+    }
 
 }
 
