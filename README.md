@@ -57,6 +57,7 @@ We advise you to create some UI to show the discovered devices and the connected
 | `CaptureSdkHandler.swift` | Implements all the `CaptureHelper` delegates and forwards the events through `NotificationCenter` |
 | `DevicesViewController.swift` | Bluetooth LE / Classic discovery, connection and removal of devices |
 | `FeaturesViewController.swift` | List of features available for a connected device |
+| `PcscViewController.swift` | Switch an NFC reader to coupler mode or back to reader mode |
 | `TriggerViewController.swift` | Start, stop and continuous trigger (including SocketCam) |
 | `FriendlyNameViewController.swift` | Get / set the device friendly name |
 | `SymbologiesViewController.swift` | Get / set barcode symbologies and NFC tag types |
@@ -85,6 +86,7 @@ We advise you to create some UI to show the discovered devices and the connected
 | `CaptureHelperErrorDelegate` | `didReceiveError` |
 | `CaptureHelperLoggerDelegate` | `didReceiveLogTrace` |
 | `CaptureHelperAllDelegate` | All of the above |
+| `CaptureHelperPcscDelegate` | `didNotifyArrivalForCoupler`, `didNotifyRemovalForCoupler`, `didNotifyArrivalForTag`, `didNotifyRemovalForTag` |
 
 When a view requiring scanning capabilities becomes active, it calls `pushDelegate` to receive the notifications. When it becomes inactive, it calls `popDelegate` and the previous delegate, if any, receives the notifications again.
 
@@ -99,7 +101,8 @@ class CaptureSdkHandler: NSObject,
                          CaptureHelperDeviceDecodedDataDelegate,
                          CaptureHelperDevicePowerDelegate,
                          CaptureHelperErrorDelegate,
-                         CaptureHelperLoggerDelegate {
+                         CaptureHelperLoggerDelegate,
+                         CaptureHelperPcscDelegate {
     // ...
 }
 ```
@@ -246,6 +249,46 @@ func didReceiveDecodedData(_ decodedData: SKTCaptureDecodedData?, fromDevice dev
 ### didChangeBatteryLevel
 
 `CaptureHelperDevicePowerDelegate` method called when the battery level of a device has changed. Use `SKTHelper.getCurrentLevel(fromBatteryLevel:)` to get the percentage.
+
+### didNotifyArrivalForCoupler
+
+`CaptureHelperPcscDelegate` method called when a PC/SC coupler is available, for instance after switching a connected NFC reader to coupler mode with `switchDeviceToCoupler`. `CaptureHelperPcscDelegate` is not part of `CaptureHelperAllDelegate` and must be adopted explicitly.
+
+### didNotifyRemovalForCoupler
+
+`CaptureHelperPcscDelegate` method called when a PC/SC coupler is no longer available.
+
+### didNotifyArrivalForTag
+
+`CaptureHelperPcscDelegate` method called when an NFC tag is presented to the coupler. Keep the `CaptureHelperDevice` of the tag to exchange data with it (`transmitDataForTagWithCompletionHandler`, `writeDataForTag`).
+
+### didNotifyRemovalForTag
+
+`CaptureHelperPcscDelegate` method called when the NFC tag is removed from the coupler.
+
+## PC/SC
+
+PC/SC lets your application read and write NFC tags directly, using a connected Socket Mobile NFC reader in coupler mode. In this sample, the **PC/SC - Coupler mode** feature is listed for NFC readers (`isNFCReader`) and opens the **PCSC feature** screen (`PcscViewController.swift`), with the **Switch to Coupler mode** and **Switch to Reader mode** buttons.
+
+Once the reader is switched to coupler mode, the coupler is notified through [`didNotifyArrivalForCoupler`](#didnotifyarrivalforcoupler). Each tag presented to it is notified through [`didNotifyArrivalForTag`](#didnotifyarrivalfortag) and listed with the **Read** and **Write** buttons (`TagDeviceCell` in `DevicesViewController.swift`):
+
+```Swift
+device.switchDeviceToCoupler { result in
+    print("switchDeviceToCoupler: \(result.rawValue)")
+}
+
+// Write an NDEF message, starting at page 4 of a Type 2 tag
+tag.writeDataForTag(ndefData, startingAtPage: 4) { result, tagResponse in
+    print("writeDataForTag: \(result.rawValue)")
+}
+
+// Read 16 bytes from page 4 with a READ BINARY APDU
+tag.transmitDataForTagWithCompletionHandler(Data([0xFF, 0xB0, 0x00, 0x04, 0x10])) { result, response in
+    print("transmitDataForTag: \(result.rawValue)")
+}
+```
+
+To switch the NFC reader back to reader mode, call `switchDeviceToReader`.
 
 ## Single Partnership
 

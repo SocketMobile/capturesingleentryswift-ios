@@ -47,7 +47,6 @@ class SinglePartnershipViewController: UIViewController {
     }
     
     @IBAction func setPermanentPartnershipUuidAction() {
-//        captureHelper.setSinglePartnership(.uuid, uuidString: "9d500cf3-5f06-4c12-9d50-0cf35f062c12", completionHandler: { result in
         captureHelper.setSinglePartnership(.uuid, uuidString: "4e813a59-5b31-fe79-9d50-0cf35f062c12", completionHandler: { result in
             print("setPermanentPartnership through Service UUID returns: \(result.rawValue)")
             DispatchQueue.main.async {

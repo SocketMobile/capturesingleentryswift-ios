@@ -17,6 +17,7 @@
 		E619B203281ADED2000A668E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E619B201281ADED2000A668E /* Foundation.framework */; };
 		E62E70722BF39A1E00994140 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62E70712BF39A1E00994140 /* SwiftUI.framework */; };
 		E6305E5227EC7A22008A395C /* SingleEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6305E5127EC7A22008A395C /* SingleEntryViewController.swift */; };
+		E63A902530A246BA00D24EB2 /* PcscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63A902430A246BA00D24EB2 /* PcscViewController.swift */; };
 		E6587848281FE98000377C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6587846281FE98000377C18 /* Main.storyboard */; };
 		E6587849281FE98000377C18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6587847281FE98000377C18 /* LaunchScreen.xib */; };
 		E6735B722F7D1B6700E673F1 /* CaptureSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E6735B712F7D1B6700E673F1 /* CaptureSDK */; };
@@ -27,6 +28,7 @@
 		E6D83B1C2E9D247800AFE2B2 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D83B1B2E9D247800AFE2B2 /* FeaturesViewController.swift */; };
 		E6D983FD27EA2CC40052DC60 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60FD6D427DA50FD00908264 /* AVFoundation.framework */; };
 		E6DAFD5329B8786800D32AF6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6DAFD5229B8786800D32AF6 /* libc++.tbd */; };
+		E6E306583094DC3C00EC2663 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E306573094DC3C00EC2663 /* SceneDelegate.swift */; };
 		E6E43FE42859FC8000003984 /* TestSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E43FE32859FC8000003984 /* TestSwiftUI.swift */; };
 		E6F0ACAB2E9D43E900FF8F0B /* TriggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0ACAA2E9D43E900FF8F0B /* TriggerViewController.swift */; };
 		E6F0ACAD2E9D596E00FF8F0B /* FriendlyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0ACAC2E9D596E00FF8F0B /* FriendlyNameViewController.swift */; };
@@ -77,6 +79,7 @@
 		E62E70612BF38BAF00994140 /* CoreAudioTypes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioTypes.framework; path = System/Library/Frameworks/CoreAudioTypes.framework; sourceTree = SDKROOT; };
 		E62E70712BF39A1E00994140 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/iOSSupport/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		E6305E5127EC7A22008A395C /* SingleEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntryViewController.swift; sourceTree = "<group>"; };
+		E63A902430A246BA00D24EB2 /* PcscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PcscViewController.swift; sourceTree = "<group>"; };
 		E6587846281FE98000377C18 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6587847281FE98000377C18 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E686AD54300FDE58006BDEDB /* SinglePartnershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePartnershipViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		E6D83B192E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSdkHandler.swift; sourceTree = "<group>"; };
 		E6D83B1B2E9D247800AFE2B2 /* FeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesViewController.swift; sourceTree = "<group>"; };
 		E6DAFD5229B8786800D32AF6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E6E306573094DC3C00EC2663 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E6E43FE32859FC8000003984 /* TestSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwiftUI.swift; sourceTree = "<group>"; };
 		E6F0ACAA2E9D43E900FF8F0B /* TriggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerViewController.swift; sourceTree = "<group>"; };
 		E6F0ACAC2E9D596E00FF8F0B /* FriendlyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendlyNameViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				E6F0ACB02E9D78E000FF8F0B /* BatteryViewController.swift */,
 				E6F0ACB22E9D864900FF8F0B /* FirmwareViewController.swift */,
 				E6F0ACAC2E9D596E00FF8F0B /* FriendlyNameViewController.swift */,
+				E63A902430A246BA00D24EB2 /* PcscViewController.swift */,
 				E6F0ACAA2E9D43E900FF8F0B /* TriggerViewController.swift */,
 				E686AD54300FDE58006BDEDB /* SinglePartnershipViewController.swift */,
 				E6F0ACAE2E9D5B8C00FF8F0B /* SymbologiesViewController.swift */,
@@ -163,6 +168,7 @@
 				679FF03C1A1A83C900510266 /* Supporting Files */,
 				E7B266991D94130E00A49830 /* CaptureHelperExtension.swift */,
 				E6E43FE32859FC8000003984 /* TestSwiftUI.swift */,
+				E6E306573094DC3C00EC2663 /* SceneDelegate.swift */,
 			);
 			path = SingleEntrySwift;
 			sourceTree = "<group>";
@@ -351,11 +357,13 @@
 				E6F0ACB32E9D864900FF8F0B /* FirmwareViewController.swift in Sources */,
 				E6F0ACAF2E9D5B8C00FF8F0B /* SymbologiesViewController.swift in Sources */,
 				E6D83B1A2E9CF3BD00AFE2B2 /* CaptureSdkHandler.swift in Sources */,
+				E6E306583094DC3C00EC2663 /* SceneDelegate.swift in Sources */,
 				E686AD55300FDE58006BDEDB /* SinglePartnershipViewController.swift in Sources */,
 				E6305E5227EC7A22008A395C /* SingleEntryViewController.swift in Sources */,
 				E6E43FE42859FC8000003984 /* TestSwiftUI.swift in Sources */,
 				679FF03F1A1A83C900510266 /* AppDelegate.swift in Sources */,
 				E6F0ACAD2E9D596E00FF8F0B /* FriendlyNameViewController.swift in Sources */,
+				E63A902530A246BA00D24EB2 /* PcscViewController.swift in Sources */,
 				E744CF421BDFDD700090F8C0 /* SettingsViewController.swift in Sources */,
 				E6D83B1C2E9D247800AFE2B2 /* FeaturesViewController.swift in Sources */,
 				E6D83B182E9961E100AFE2B2 /* DevicesViewController.swift in Sources */,

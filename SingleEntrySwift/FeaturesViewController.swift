@@ -17,6 +17,7 @@ enum FeatureType: String {
     case firmwareVersion
     case batteryLevel
     case singlePartnership
+    case pcsc
 }
 
 class FeaturesViewController: UIViewController {
@@ -54,6 +55,10 @@ class FeaturesViewController: UIViewController {
 
         if device?.deviceInfo.deviceType != .socketCamC820 && device?.deviceInfo.deviceType != .socketCamC860 {
             features.append([.firmwareVersion : "Get Firmware Version"])
+        }
+
+        if device?.isNFCReader ?? false {
+            features.append([.pcsc : "PC/SC - Coupler mode"])
         }
     }
 
@@ -111,6 +116,11 @@ extension FeaturesViewController: UITableViewDelegate {
             if let firmwareViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirmwareViewController") as? FirmwareViewController {
                 firmwareViewController.device = device
                 self.navigationController?.pushViewController(firmwareViewController, animated: true)
+            }
+        case .pcsc:
+            if let pcscViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PcscViewController") as? PcscViewController {
+                pcscViewController.device = device
+                self.navigationController?.pushViewController(pcscViewController, animated: true)
             }
         default:
             break

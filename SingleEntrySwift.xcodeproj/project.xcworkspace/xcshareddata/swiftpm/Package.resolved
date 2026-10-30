@@ -1,0 +1,24 @@
+{
+  "originHash" : "893b4dccc467cadbcc5f6b8e3441aee858b80766058d7901b2172533b5d49be1",
+  "pins" : [
+    {
+      "identity" : "swift-package-capturesdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SocketMobile/swift-package-capturesdk",
+      "state" : {
+        "revision" : "3094e3bb34776180bae682232ac4bc7f120564f9",
+        "version" : "2.1.36"
+      }
+    },
+    {
+      "identity" : "swift-package-swiftdecodersdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SocketMobile/swift-package-swiftdecodersdk.git",
+      "state" : {
+        "revision" : "6b949e92bf4daaaf9da0a1e9694db2595b471480",
+        "version" : "6.7.2"
+      }
+    }
+  ],
+  "version" : 3
+}

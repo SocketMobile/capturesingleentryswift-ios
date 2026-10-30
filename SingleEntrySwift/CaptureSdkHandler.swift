@@ -12,11 +12,11 @@ import CaptureSDK
 // All the CaptureHelperDelegate are grouped in a same class to simplify this sample app
 // Otherwise those delegates can be "pushed" and "popped" for a particular class
 
-class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDiscoveryDelegate, CaptureHelperLoggerDelegate {
+class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureHelperDeviceDecodedDataDelegate, CaptureHelperErrorDelegate, CaptureHelperDevicePowerDelegate, CaptureHelperDiscoveryDelegate, CaptureHelperLoggerDelegate, CaptureHelperPcscDelegate {
 
     var scanners: [CaptureHelperDevice] = []
 
-    
+
     // MARK: - CaptureHelperLoggerDelegate
 
     func didReceiveLogTrace(_ logTrace: String) {
@@ -91,6 +91,28 @@ class CaptureSdkHandler: NSObject, CaptureHelperDevicePresenceDelegate, CaptureH
     func didChangeBatteryLevel(_ batteryLevel: Int, forDevice device: CaptureHelperDevice) {
         let battery = SKTHelper.getCurrentLevel(fromBatteryLevel: batteryLevel)
         print("the device \((device.deviceInfo.name)! as String) has a battery level: \(String(describing: battery))%")
+    }
+
+    // MARK: - CaptureHelperPcscDelegate
+
+    func didNotifyArrivalForCoupler(_ coupler: CaptureHelperDevice, withResult result: SKTResult) {
+        print("didNotifyArrivalForCoupler: \(coupler.deviceInfo.name ?? "") - Type: \(coupler.deviceInfo.deviceType) - GUID: \(coupler.deviceInfo.guid ?? "") - Result: \(result.rawValue)")
+        NotificationCenter.default.post(name: NSNotification.Name("didNotifyArrivalForCoupler"), object: coupler)
+    }
+
+    func didNotifyRemovalForCoupler(_ coupler: CaptureHelperDevice, withResult result: SKTResult) {
+        print("didNotifyRemovalForCoupler: \(coupler.deviceInfo.name ?? "") - Type: \(coupler.deviceInfo.deviceType) - GUID: \(coupler.deviceInfo.guid ?? "") - Result: \(result.rawValue)")
+        NotificationCenter.default.post(name: NSNotification.Name("didNotifyRemovalForCoupler"), object: coupler)
+    }
+
+    func didNotifyArrivalForTag(_ tag: CaptureHelperDevice, withResult result: SKTResult) {
+        print("didNotifyArrivalForTag: \(tag.deviceInfo.name ?? "") - Type: \(tag.deviceInfo.deviceType) - GUID: \(tag.deviceInfo.guid ?? "") - Result: \(result.rawValue)")
+        NotificationCenter.default.post(name: NSNotification.Name("didNotifyArrivalForTag"), object: tag)
+    }
+
+    func didNotifyRemovalForTag(_ tag: CaptureHelperDevice, withResult result: SKTResult) {
+        print("didNotifyRemovalForTag: \(tag.deviceInfo.name ?? "") - Type: \(tag.deviceInfo.deviceType) - GUID: \(tag.deviceInfo.guid ?? "") - Result: \(result.rawValue)")
+        NotificationCenter.default.post(name: NSNotification.Name("didNotifyRemovalForTag"), object: tag)
     }
 
     // MARK: - CaptureHelperErrorDelegate

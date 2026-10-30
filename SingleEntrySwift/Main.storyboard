@@ -247,8 +247,61 @@
                                             <outlet property="nameLabel" destination="MUh-xv-Kqs" id="znl-cz-SMV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoveredDeviceCell" id="IQa-Ln-4yN" customClass="DiscoveredDeviceCell" customModule="SingleEntry" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagDeviceCell" id="N5M-Lt-un8" userLabel="TagDeviceCell" customClass="TagDeviceCell" customModule="SingleEntry" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N5M-Lt-un8" id="RF3-wi-EYd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krS-jq-2s3" userLabel="Read">
+                                                    <rect key="frame" x="299" y="8" width="68" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="TFc-Ju-E4v"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Read"/>
+                                                    <connections>
+                                                        <action selector="readTagAction" destination="N5M-Lt-un8" eventType="touchUpInside" id="NkL-dF-hAA"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSw-KS-wSo">
+                                                    <rect key="frame" x="8" y="0.0" width="207" height="64"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wq-lQ-QUX" userLabel="Read">
+                                                    <rect key="frame" x="223" y="8" width="68" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="JqG-sI-KtI"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Write"/>
+                                                    <connections>
+                                                        <action selector="writeTagAction" destination="N5M-Lt-un8" eventType="touchUpInside" id="u7U-p2-hKb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3wq-lQ-QUX" secondAttribute="bottom" constant="8" id="2hy-mV-cSo"/>
+                                                <constraint firstAttribute="bottom" secondItem="krS-jq-2s3" secondAttribute="bottom" constant="8" id="37g-Va-wIT"/>
+                                                <constraint firstAttribute="trailing" secondItem="krS-jq-2s3" secondAttribute="trailing" constant="8" id="DSW-zL-Rce"/>
+                                                <constraint firstItem="XSw-KS-wSo" firstAttribute="top" secondItem="RF3-wi-EYd" secondAttribute="top" id="IrX-HF-7SB"/>
+                                                <constraint firstItem="3wq-lQ-QUX" firstAttribute="top" secondItem="RF3-wi-EYd" secondAttribute="top" constant="8" id="Tum-mU-hwR"/>
+                                                <constraint firstItem="XSw-KS-wSo" firstAttribute="leading" secondItem="RF3-wi-EYd" secondAttribute="leading" constant="8" id="VgA-aQ-crX"/>
+                                                <constraint firstItem="krS-jq-2s3" firstAttribute="leading" secondItem="3wq-lQ-QUX" secondAttribute="trailing" constant="8" symbolic="YES" id="dgo-px-Qt7"/>
+                                                <constraint firstItem="3wq-lQ-QUX" firstAttribute="leading" secondItem="XSw-KS-wSo" secondAttribute="trailing" constant="8" id="oM3-5i-E9o"/>
+                                                <constraint firstItem="krS-jq-2s3" firstAttribute="top" secondItem="RF3-wi-EYd" secondAttribute="top" constant="8" id="raG-45-oiy"/>
+                                                <constraint firstAttribute="bottom" secondItem="XSw-KS-wSo" secondAttribute="bottom" id="wDy-ah-FHy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="XSw-KS-wSo" id="hhP-aB-5L2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoveredDeviceCell" id="IQa-Ln-4yN" customClass="DiscoveredDeviceCell" customModule="SingleEntry" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="178" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IQa-Ln-4yN" id="Ee6-58-fHl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -995,6 +1048,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5J-aW-3xW" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2968.8000000000002" y="959.37031484257875"/>
+        </scene>
+        <!--SingleEntry CaptureSDK-->
+        <scene sceneID="Pcs-Sc-0aa">
+            <objects>
+                <viewController storyboardIdentifier="PcscViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pcs-VC-0aa" customClass="PcscViewController" customModule="SingleEntry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pcs-TL-0aa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pcs-BL-0aa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pcs-VW-0aa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-LB-0aa">
+                                <rect key="frame" x="8" y="20" width="359" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Pcs-C1-0aa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-SL-0aa">
+                                <rect key="frame" x="8" y="84" width="359" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Pcs-C5-0aa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-BC-0aa">
+                                <rect key="frame" x="26" y="188.5" width="323" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Pcs-C6-0aa"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Switch to Coupler mode">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="switchToCouplerAction" destination="Pcs-VC-0aa" eventType="touchUpInside" id="Pcs-A1-0aa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-BR-0aa">
+                                <rect key="frame" x="26" y="287" width="323" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Pcs-C7-0aa"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Switch to Reader mode">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="switchToReaderAction" destination="Pcs-VC-0aa" eventType="touchUpInside" id="Pcs-A2-0aa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pcs-LB-0aa" firstAttribute="leading" secondItem="Pcs-VW-0aa" secondAttribute="leading" constant="8" id="Pcs-C2-0aa"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcs-LB-0aa" secondAttribute="trailing" constant="8" id="Pcs-C3-0aa"/>
+                            <constraint firstItem="Pcs-LB-0aa" firstAttribute="top" secondItem="Pcs-TL-0aa" secondAttribute="bottom" id="Pcs-C4-0aa"/>
+                            <constraint firstItem="Pcs-SL-0aa" firstAttribute="top" secondItem="Pcs-LB-0aa" secondAttribute="bottom" constant="42" id="Pcs-C8-0aa"/>
+                            <constraint firstItem="Pcs-SL-0aa" firstAttribute="leading" secondItem="Pcs-VW-0aa" secondAttribute="leading" constant="8" id="Pcs-C9-0aa"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcs-SL-0aa" secondAttribute="trailing" constant="8" id="Pcs-D1-0aa"/>
+                            <constraint firstItem="Pcs-BC-0aa" firstAttribute="top" secondItem="Pcs-SL-0aa" secondAttribute="bottom" constant="80.5" id="Pcs-D2-0aa"/>
+                            <constraint firstItem="Pcs-BC-0aa" firstAttribute="leading" secondItem="Pcs-VW-0aa" secondAttribute="leadingMargin" constant="10" id="Pcs-D3-0aa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pcs-BC-0aa" secondAttribute="trailing" constant="10" id="Pcs-D4-0aa"/>
+                            <constraint firstItem="Pcs-BR-0aa" firstAttribute="top" secondItem="Pcs-BC-0aa" secondAttribute="bottom" constant="38.5" id="Pcs-D5-0aa"/>
+                            <constraint firstItem="Pcs-BR-0aa" firstAttribute="leading" secondItem="Pcs-VW-0aa" secondAttribute="leadingMargin" constant="10" id="Pcs-D6-0aa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pcs-BR-0aa" secondAttribute="trailing" constant="10" id="Pcs-D7-0aa"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="SingleEntry CaptureSDK" id="Pcs-NI-0aa"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="Pcs-SL-0aa" id="Pcs-OS-0aa"/>
+                        <outlet property="switchToCouplerButton" destination="Pcs-BC-0aa" id="Pcs-OC-0aa"/>
+                        <outlet property="switchToReaderButton" destination="Pcs-BR-0aa" id="Pcs-OR-0aa"/>
+                        <outlet property="titleLabel" destination="Pcs-LB-0aa" id="Pcs-OT-0aa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pcs-FR-0aa" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7190" y="959"/>
         </scene>
     </scenes>
     <resources>
